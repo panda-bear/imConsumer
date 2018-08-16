@@ -1,0 +1,61 @@
+#-------------------公共配置-----------------------
+spring:
+  profiles:
+    active: test  #默认使用配置
+  http:        
+    encoding:  #http请求响应字符集配置
+      charset: UTF-8  
+      enabled: true
+      force: true  
+
+mybatis:
+  mapperLocations: classpath:mapper/*.xml   #指定mapper 文件路径   
+
+server:
+  servlet:
+    context-path: /imClient #工程项目名称
+---
+#---------------开发配置
+spring:
+  profiles: dev
+  datasource: #数据库配置
+    url: jdbc:mysql://20.21.1.92:3306/fjzl_tz?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: sxzz@rc2015
+    driver-class-name: com.mysql.jdbc.Driver  
+    type: com.alibaba.druid.pool.DruidDataSource #指定数据源
+    
+server:
+  port: 8082 #端口号配置
+  
+#配置日志
+logging:
+  file: d:/my.log
+  level:
+    root: INFO
+    org.springframework.web: INFO  
+    sample.mybatis.mapper: trace
+---    
+#---------------测试配置
+spring:
+  profiles: test
+  datasource: #数据库配置
+    url: jdbc:mysql://20.21.1.92:3306/fjzl_tz?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: sxzz@rc2015
+    driver-class-name: com.mysql.jdbc.Driver  
+    type: com.alibaba.druid.pool.DruidDataSource #指定数据源
+  
+server:
+  port: 8083 #端口号配置
+
+#钉钉相关配置(Panda的企业)
+ding: 
+  corpId: dingd3b05ba4384e94de35c2f4657eb6378f
+  corpSecret: 9PeBABrfNLViuNAEPUnxeQvbBKrYpA5v9p7FaEHhlnrEve5Fb132Y87Aul8dGss_
+  
+    
+
+
+    
+    

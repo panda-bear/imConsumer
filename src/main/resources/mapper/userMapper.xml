@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zjrc.sxzz.dao.UserDao" >
+    <select id="selectByMobile" parameterType="Map" resultType="com.zjrc.sxzz.entity.User">
+    	SELECT name FROM `sxzz_account` a WHERE a.MOBILE = #{mobile} 
+    </select>
+</mapper>
