@@ -1,12 +1,16 @@
 #-------------------公共配置-----------------------
 spring:
   profiles:
-    active: test  #默认使用配置
+    active: dev  #默认使用配置
   http:        
     encoding:  #http请求响应字符集配置
       charset: UTF-8  
       enabled: true
-      force: true  
+      force: true
+  cache: #缓存相关配置
+    type: ehcache
+    ehcache:
+      config: classpath:ehcache.xml
 
 mybatis:
   mapperLocations: classpath:mapper/*.xml   #指定mapper 文件路径   
@@ -14,6 +18,7 @@ mybatis:
 server:
   servlet:
     context-path: /imClient #工程项目名称
+    
 ---
 #---------------开发配置
 spring:
@@ -28,13 +33,6 @@ spring:
 server:
   port: 8082 #端口号配置
   
-#配置日志
-logging:
-  file: d:/my.log
-  level:
-    root: INFO
-    org.springframework.web: INFO  
-    sample.mybatis.mapper: trace
 ---    
 #---------------测试配置
 spring:
@@ -49,10 +47,7 @@ spring:
 server:
   port: 8083 #端口号配置
 
-#钉钉相关配置(Panda的企业)
-ding: 
-  corpId: dingd3b05ba4384e94de35c2f4657eb6378f
-  corpSecret: 9PeBABrfNLViuNAEPUnxeQvbBKrYpA5v9p7FaEHhlnrEve5Fb132Y87Aul8dGss_
+
   
     
 

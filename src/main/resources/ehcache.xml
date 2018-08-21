@@ -1,0 +1,10 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd">
+
+    <cache name="tokenCache"
+           eternal="false"
+           maxEntriesLocalHeap="0" 
+           timeToLiveSeconds="1800"/> 
+    <!-- DingDing 缓存token7200秒 ,半小时刷新缓存 -->
+
+</ehcache>

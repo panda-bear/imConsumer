@@ -1,7 +1,10 @@
 package com.zjrc.sxzz;
 
 import org.junit.Test;
+
 import com.alibaba.fastjson.JSONObject;
+import com.zjrc.sxzz.pattern.factory.ImClientFactory;
+import com.zjrc.sxzz.util.ConfigUtil;
 import com.zjrc.sxzz.util.HttpClientUtil;
 
 
@@ -23,7 +26,7 @@ public class DeptTests extends DingTest{
 	 */
 	@Test
 	public void getSubDeptIds() {
-		String res = HttpClientUtil.doGet("https://oapi.dingtalk.com/department/list_ids?access_token="+token+"&id=1");
+		String res = HttpClientUtil.doGet("https://oapi.dingtalk.com/department/list_ids?access_token="+token+"&id=74902069");
 		log.info("获取子部门ID列表------>{}" , res);
 	}
 	
@@ -40,15 +43,16 @@ public class DeptTests extends DingTest{
 	 * 可获取部门id
 	 */
 	@Test
-	public void createDept() {
+	public void createDept() throws Exception {
 		JSONObject hospital = new JSONObject();
-		hospital.put("name", "科室B");
+		hospital.put("name", "科室BB");
 		hospital.put("parentid", "74762382");
-		hospital.put("order", "1");
+		hospital.put("order", "2");
 		hospital.put("createDeptGroup", true);
 		hospital.put("deptHiding", false);
 		
-		String res = HttpClientUtil.doPost("https://oapi.dingtalk.com/department/create?access_token="+token, hospital.toJSONString());
+		ImClientFactory imFactory = (ImClientFactory)Class.forName(ConfigUtil.getInstance().getString("concreteFactory")).newInstance();
+		String res = imFactory.createImClientProduct().createDept(token, hospital.toJSONString());
 		log.info("创建部门------>{}" , res);
 	}
 	
