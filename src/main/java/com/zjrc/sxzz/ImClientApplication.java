@@ -14,7 +14,6 @@ import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 
 @SpringBootApplication
 @MapperScan("com.zjrc.sxzz.dao")
-@EnableCaching//启用缓存
 //@EnableConfigurationProperties({YmlConfig.class})//读取yml配置
 public class ImClientApplication {
 

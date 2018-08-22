@@ -7,10 +7,10 @@ spring:
       charset: UTF-8  
       enabled: true
       force: true
-  cache: #缓存相关配置
-    type: ehcache
-    ehcache:
-      config: classpath:ehcache.xml
+#  cache: #缓存相关配置
+#    type: ehcache
+#    ehcache:
+#      config: classpath:ehcache.xml
 
 mybatis:
   mapperLocations: classpath:mapper/*.xml   #指定mapper 文件路径   

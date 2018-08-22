@@ -1,10 +1,9 @@
 package com.zjrc.sxzz.cache;
 
+import java.net.URL;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSON;
@@ -12,15 +11,41 @@ import com.alibaba.fastjson.JSONObject;
 import com.zjrc.sxzz.util.ConfigUtil;
 import com.zjrc.sxzz.util.HttpClientUtil;
 
-@CacheConfig(cacheNames = {"tokenCache"})
+import net.sf.ehcache.Cache;
+import net.sf.ehcache.CacheManager;
+import net.sf.ehcache.Element;
+
 @Component
-public class ehcacheTokenCache implements ITokenCache {
+public class EhcacheTokenCache implements ITokenCache {
 	
-	private static Logger log = LoggerFactory.getLogger(ehcacheTokenCache.class);
+	private static Logger log = LoggerFactory.getLogger(EhcacheTokenCache.class);
 	
-	@Cacheable(key="#root.targetClass")
+	private CacheManager cacheManager;
+	
+	private Cache cache;
+	
+	private static String KEY = "token";
+	
+	public EhcacheTokenCache() {
+		 URL url = getClass().getResource("/ehcache.xml");  
+		 cacheManager = CacheManager.create(url);
+		 cache = cacheManager.getCache("tokenCache"); 
+	}
+	
 	@Override
 	public String getToken() {
+		Element ele = cache.get(KEY);
+		if (ele == null) {
+			ele = new Element(KEY , fetchToken());
+			cache.put(ele);
+		} 
+		return (String)ele.getObjectValue();
+	}
+	
+	/**调用钉钉开放平台获取token
+	 * @return
+	 */
+	private String fetchToken() {
 		String corpId = ConfigUtil.getInstance().getString("ding_corpId");
 		String corpSecret = ConfigUtil.getInstance().getString("ding_corpSecret");
 		log.info("-------------------------->corpId={} , corpSecret={} " , corpId , corpSecret);
@@ -31,10 +56,12 @@ public class ehcacheTokenCache implements ITokenCache {
 		return token;
 	}
 	
-	@CacheEvict(key="#root.targetClass")
 	@Override
 	public void deleteToken() {
-		
+		if (cache != null) {
+			cache.remove(KEY);
+			log.info("缓存删除了key为{}的元素对象" , KEY);
+		}
 	}
 
 }

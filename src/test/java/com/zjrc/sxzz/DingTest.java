@@ -9,21 +9,27 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.zjrc.sxzz.cache.ITokenCache;
+import com.zjrc.sxzz.pattern.factory.ImClientProduct;
+
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class DingTest {
-	protected Logger log = LoggerFactory.getLogger(DeptTests.class);
+	
+	protected Logger log = LoggerFactory.getLogger(DingTest.class);
+	
+	@Autowired
+	protected ITokenCache tokenCache;
+	
+	@Autowired
+	protected ImClientProduct imclient;
 	
 	protected String token;
 	
-	@Autowired
-	private ITokenCache tokenCache;
-	/**
-	 * 获取token
-	 */
 	@Before
 	public void init() {
 		token = tokenCache.getToken();
-	}	
+	}
+	
 }
