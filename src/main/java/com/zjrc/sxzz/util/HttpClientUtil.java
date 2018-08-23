@@ -12,6 +12,8 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicHeader;
 import org.apache.http.util.EntityUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 /**
  * 利用HttpClient进行post请求的工具类
  * @ClassName: HttpClientUtil 
@@ -19,7 +21,13 @@ import org.apache.http.util.EntityUtils;
  */
 public class HttpClientUtil {
 	
+	private static Logger log = LoggerFactory.getLogger(HttpClientUtil.class);
 	
+    /**https post请求
+     * @param url
+     * @param jsonstr
+     * @return
+     */
     public static String doPost(String url,String jsonstr){
         HttpClient httpClient = null;
         HttpPost httpPost = null;
@@ -45,7 +53,10 @@ public class HttpClientUtil {
         return result;
     }
     
-    
+	/**
+	 * @param url
+	 * @return
+	 */
 	public static String doGet(String url) {
         try {
         	HttpClient client = new DefaultHttpClient();

@@ -13,7 +13,12 @@ public class DingImClientProduct extends ImClientProduct{
 	public DingImClientProduct(String urlPrefix) {
 		super(urlPrefix);
 	}
-
+	
+	@Override
+	public String getUserIdByCode(String code) {
+		return HttpClientUtil.doGet(urlPrefix+"/user/getuserinfo?access_token="+tokenCache.getToken()+"&code="+code);
+	}
+	
 	@Override
 	public String createDept(String jsonStr) {
 		return HttpClientUtil.doPost(urlPrefix + "/department/create?access_token=" + tokenCache.getToken(), jsonStr);
@@ -48,6 +53,5 @@ public class DingImClientProduct extends ImClientProduct{
 	public String deleteDoctor(String id) {
 		return HttpClientUtil.doGet(urlPrefix+"/user/delete?access_token="+tokenCache.getToken()+"&userid="+id);
 	}
-	
 
 }

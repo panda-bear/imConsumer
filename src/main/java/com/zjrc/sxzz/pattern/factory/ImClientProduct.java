@@ -11,6 +11,12 @@ public abstract class ImClientProduct {
 		this.urlPrefix = urlPrefix;
 	}
 	
+	/**免登授权 
+	 * @param code
+	 * @return 用户id
+	 */
+	public abstract String getUserIdByCode(String code);
+	
 	/**创建医院或科室
 	 * @param token
 	 * @param jsonStr

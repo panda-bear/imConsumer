@@ -30,7 +30,7 @@
     select 
     <include refid="Base_Column_List" />
     from sxzz_account
-    where ACCOUNT_ID = #{accountId,jdbcType=INTEGER}
+    where STATUS = '0' AND ACCOUNT_ID = #{accountId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from sxzz_account
