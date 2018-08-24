@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.zjrc.sxzz.ImClientResponse;
 import com.zjrc.sxzz.dao.AccountMapper;
@@ -34,17 +35,14 @@ public class AccountServiceImpl implements AccountService {
 		log.info("根据code:{}  ,从钉钉获取到userId: {}" , code , userId);
 		Account account = accountMapper.selectByPrimaryKey(Integer.valueOf(userId));
 		
-		//模拟登录App服务获取token
+		//登录App服务获取token
 		JSONObject o = new JSONObject();
 		o.put("account", account.getMobile());
 		o.put("password", account.getPassword());
 		res = HttpClientUtil.doPost(ConfigUtil.getInstance().getString("appLogin"), o.toJSONString());
-		String token = JsonStrUtil.getStrValueByKeyForApp(res, "sessionId");
-		log.info("从app服务获取到当前用户登录的token: {}" , token);
+		log.info("从app服务获取到当前用户登录的信息: {}" , res);
 		
-		o.clear();
-		o.put("token", token);
-		return new ImClientResponse("0" , "" , o);
+		return new ImClientResponse("0" , "" , JSON.parseObject(res));
 	}
 
 }

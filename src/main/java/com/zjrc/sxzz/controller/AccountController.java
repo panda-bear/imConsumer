@@ -15,12 +15,8 @@ public class AccountController {
 	private AccountService accountService;
 	
 	@GetMapping("/getToken")
-	public Object test(String code) {
-		try {
-			return accountService.getTokenByCode(code);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return  new ImClientResponse("1", e.getMessage(), null);
-		} 
+	public Object getToken(String code) {
+		return accountService.getTokenByCode(code);
 	}
+	
 }

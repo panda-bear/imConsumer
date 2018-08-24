@@ -15,12 +15,4 @@ public class JsonStrUtil {
 		return o.getString(key);
 	}
 	
-	public static String getStrValueByKeyForApp(String jsonStr , String key) {
-		JSONObject o = JSON.parseObject(jsonStr);
-		String errcode = o.getString("responseStatus");
-		if (!"200".equals(errcode)) {
-			throw new RuntimeException(o.getString("responseStatusDesc"));
-		}
-		return o.getString(key);
-	}	
 }
