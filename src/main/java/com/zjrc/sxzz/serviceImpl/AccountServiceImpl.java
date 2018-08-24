@@ -14,7 +14,7 @@ import com.zjrc.sxzz.pattern.factory.ImClientProduct;
 import com.zjrc.sxzz.service.AccountService;
 import com.zjrc.sxzz.util.ConfigUtil;
 import com.zjrc.sxzz.util.HttpClientUtil;
-import com.zjrc.sxzz.util.JsonStrUtil;
+import com.zjrc.sxzz.util.JsonUtil;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -31,7 +31,7 @@ public class AccountServiceImpl implements AccountService {
 	public ImClientResponse getTokenByCode(String code) {
 		String res = imClient.getUserIdByCode(code);
 		log.info("钉钉响应------------>{}" , res);
-		String userId = JsonStrUtil.getStrValueByKeyForDing(res, "userid");
+		String userId = JsonUtil.getStrValueByKeyForDing(res, "userid");
 		log.info("根据code:{}  ,从钉钉获取到userId: {}" , code , userId);
 		Account account = accountMapper.selectByPrimaryKey(Integer.valueOf(userId));
 		

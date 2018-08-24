@@ -17,7 +17,7 @@ mybatis:
 
 server:
   servlet:
-    context-path: /imClient #工程项目名称
+    context-path: /imConsumer #工程项目名称
     
 ---
 #---------------开发配置
