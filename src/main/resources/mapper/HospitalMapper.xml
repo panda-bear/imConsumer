@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zjrc.sxzz.dao.HospitalMapper" >
+  <resultMap id="BaseResultMap" type="com.zjrc.sxzz.entity.Hospital" >
+    <id column="HOSPITAL_ID" property="hospitalId" jdbcType="VARCHAR" />
+    <result column="PARENT_HOSPITAL_ID" property="parentHospitalId" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="ABBREVIATION" property="abbreviation" jdbcType="VARCHAR" />
+    <result column="ALIASES" property="aliases" jdbcType="VARCHAR" />
+    <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
+    <result column="AREA_ID" property="areaId" jdbcType="VARCHAR" />
+    <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+    <result column="ZIP" property="zip" jdbcType="VARCHAR" />
+    <result column="LONGITUDE" property="longitude" jdbcType="VARCHAR" />
+    <result column="LATITUDE" property="latitude" jdbcType="VARCHAR" />
+    <result column="LEVEL" property="level" jdbcType="VARCHAR" />
+    <result column="NATURE" property="nature" jdbcType="VARCHAR" />
+    <result column="CATEGORY" property="category" jdbcType="VARCHAR" />
+    <result column="PICTURE" property="picture" jdbcType="VARCHAR" />
+    <result column="PHONE" property="phone" jdbcType="VARCHAR" />
+    <result column="FAX" property="fax" jdbcType="VARCHAR" />
+    <result column="MOBILE" property="mobile" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="QQ" property="qq" jdbcType="VARCHAR" />
+    <result column="WX" property="wx" jdbcType="VARCHAR" />
+    <result column="WEB_URL" property="webUrl" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="OPEN_STATE" property="openState" jdbcType="VARCHAR" />
+    <result column="OPEN_DATE" property="openDate" jdbcType="VARCHAR" />
+    <result column="CLINIC_STATE" property="clinicState" jdbcType="VARCHAR" />
+    <result column="INSPECTION_STATE" property="inspectionState" jdbcType="VARCHAR" />
+    <result column="HOSPITALIZE_STATE" property="hospitalizeState" jdbcType="VARCHAR" />
+    <result column="EMERGENCY_STATE" property="emergencyState" jdbcType="VARCHAR" />
+    <result column="OPERATION_STATE" property="operationState" jdbcType="VARCHAR" />
+    <result column="OPERATION_PLATFORM_ID" property="operationPlatformId" jdbcType="VARCHAR" />
+    <result column="OPERATION_HOSPITAL_ID" property="operationHospitalId" jdbcType="VARCHAR" />
+    <result column="OPERATION_CONTACT_NAME" property="operationContactName" jdbcType="VARCHAR" />
+    <result column="OPERATION_CONTACT_MOBILE" property="operationContactMobile" jdbcType="VARCHAR" />
+    <result column="OPERATION_CONTACT_PHONE" property="operationContactPhone" jdbcType="VARCHAR" />
+    <result column="PATIENT_INFO_STATE" property="patientInfoState" jdbcType="VARCHAR" />
+    <result column="HOSPITALIZE_IN_RECORD_STATE" property="hospitalizeInRecordState" jdbcType="VARCHAR" />
+    <result column="HOSPITALIZE_OUT_RECORD_STATE" property="hospitalizeOutRecordState" jdbcType="VARCHAR" />
+    <result column="INSPECTION_EXAM_REPORT_STATE" property="inspectionExamReportState" jdbcType="VARCHAR" />
+    <result column="INSPECTION_LIS_REPORT_STATE" property="inspectionLisReportState" jdbcType="VARCHAR" />
+    <result column="SORT_INDEX" property="sortIndex" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+    <result column="CREATE_USER_ID" property="createUserId" jdbcType="VARCHAR" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="VARCHAR" />
+    <result column="MODIFY_USER_ID" property="modifyUserId" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="CLINIC_THIRD_PART_STATE" property="clinicThirdPartState" jdbcType="VARCHAR" />
+    <result column="INSPECTION_THIRD_PART_STATE" property="inspectionThirdPartState" jdbcType="VARCHAR" />
+    <result column="HOSPITALIZE_THIRD_PART_STATE" property="hospitalizeThirdPartState" jdbcType="VARCHAR" />
+    <result column="EMERGENCY_THIRD_PART_STATE" property="emergencyThirdPartState" jdbcType="VARCHAR" />
+    <result column="OPERATION_THIRD_PART_STATE" property="operationThirdPartState" jdbcType="VARCHAR" />
+    <result column="EMERGENCY_PLATFORM_ID" property="emergencyPlatformId" jdbcType="VARCHAR" />
+    <result column="EMERGENCY_HOSPITAL_ID" property="emergencyHospitalId" jdbcType="VARCHAR" />
+    <result column="EMERGENCY_CONTACT_NAME" property="emergencyContactName" jdbcType="VARCHAR" />
+    <result column="EMERGENCY_CONTACT_MOBILE" property="emergencyContactMobile" jdbcType="VARCHAR" />
+    <result column="EMERGENCY_CONTACT_PHONE" property="emergencyContactPhone" jdbcType="VARCHAR" />
+    <result column="HOSPITALIZE_PLATFORM_ID" property="hospitalizePlatformId" jdbcType="VARCHAR" />
+    <result column="HOSPITALIZE_HOSPITAL_ID" property="hospitalizeHospitalId" jdbcType="VARCHAR" />
+    <result column="HOSPITALIZE_CONTACT_TYPE" property="hospitalizeContactType" jdbcType="VARCHAR" />
+    <result column="HOSPITALIZE_CONTACT_NAME" property="hospitalizeContactName" jdbcType="VARCHAR" />
+    <result column="HOSPITALIZE_CONTACT_MOBILE" property="hospitalizeContactMobile" jdbcType="VARCHAR" />
+    <result column="HOSPITALIZE_CONTACT_PHONE" property="hospitalizeContactPhone" jdbcType="VARCHAR" />
+    <result column="INSPECTION_PLATFORM_ID" property="inspectionPlatformId" jdbcType="VARCHAR" />
+    <result column="INSPECTION_HOSPITAL_ID" property="inspectionHospitalId" jdbcType="VARCHAR" />
+    <result column="INSPECTION_CONTACT_NAME" property="inspectionContactName" jdbcType="VARCHAR" />
+    <result column="INSPECTION_CONTACT_MOBILE" property="inspectionContactMobile" jdbcType="VARCHAR" />
+    <result column="INSPECTION_CONTACT_PHONE" property="inspectionContactPhone" jdbcType="VARCHAR" />
+    <result column="CLINIC_PLATFORM_ID" property="clinicPlatformId" jdbcType="VARCHAR" />
+    <result column="CLINIC_INNER_HISPITAL_ID" property="clinicInnerHispitalId" jdbcType="VARCHAR" />
+    <result column="CLINIC_CONTACT_NAME" property="clinicContactName" jdbcType="VARCHAR" />
+    <result column="CLINIC_CONTACT_MOBILE" property="clinicContactMobile" jdbcType="VARCHAR" />
+    <result column="CLINIC_CONTACT_PHONE" property="clinicContactPhone" jdbcType="VARCHAR" />
+    <result column="is_syn_created" property="isSynCreated" jdbcType="VARCHAR" />
+    <result column="is_syn_updated" property="isSynUpdated" jdbcType="VARCHAR" />
+    <result column="is_syn_deleated" property="isSynDeleated" jdbcType="VARCHAR" />
+    <result column="hospital_id_ding" property="hospitalIdDing" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    HOSPITAL_ID, PARENT_HOSPITAL_ID, NAME, ABBREVIATION, ALIASES, DESCRIPTION, AREA_ID, 
+    ADDRESS, ZIP, LONGITUDE, LATITUDE, LEVEL, NATURE, CATEGORY, PICTURE, PHONE, FAX, 
+    MOBILE, EMAIL, QQ, WX, WEB_URL, REMARK, OPEN_STATE, OPEN_DATE, CLINIC_STATE, INSPECTION_STATE, 
+    HOSPITALIZE_STATE, EMERGENCY_STATE, OPERATION_STATE, OPERATION_PLATFORM_ID, OPERATION_HOSPITAL_ID, 
+    OPERATION_CONTACT_NAME, OPERATION_CONTACT_MOBILE, OPERATION_CONTACT_PHONE, PATIENT_INFO_STATE, 
+    HOSPITALIZE_IN_RECORD_STATE, HOSPITALIZE_OUT_RECORD_STATE, INSPECTION_EXAM_REPORT_STATE, 
+    INSPECTION_LIS_REPORT_STATE, SORT_INDEX, CREATE_TIME, CREATE_USER_ID, MODIFY_TIME, 
+    MODIFY_USER_ID, STATUS, CLINIC_THIRD_PART_STATE, INSPECTION_THIRD_PART_STATE, HOSPITALIZE_THIRD_PART_STATE, 
+    EMERGENCY_THIRD_PART_STATE, OPERATION_THIRD_PART_STATE, EMERGENCY_PLATFORM_ID, EMERGENCY_HOSPITAL_ID, 
+    EMERGENCY_CONTACT_NAME, EMERGENCY_CONTACT_MOBILE, EMERGENCY_CONTACT_PHONE, HOSPITALIZE_PLATFORM_ID, 
+    HOSPITALIZE_HOSPITAL_ID, HOSPITALIZE_CONTACT_TYPE, HOSPITALIZE_CONTACT_NAME, HOSPITALIZE_CONTACT_MOBILE, 
+    HOSPITALIZE_CONTACT_PHONE, INSPECTION_PLATFORM_ID, INSPECTION_HOSPITAL_ID, INSPECTION_CONTACT_NAME, 
+    INSPECTION_CONTACT_MOBILE, INSPECTION_CONTACT_PHONE, CLINIC_PLATFORM_ID, CLINIC_INNER_HISPITAL_ID, 
+    CLINIC_CONTACT_NAME, CLINIC_CONTACT_MOBILE, CLINIC_CONTACT_PHONE, is_syn_created, 
+    is_syn_updated, is_syn_deleated,hospital_id_ding
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sxzz_hospital
+    where HOSPITAL_ID = #{hospitalId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sxzz_hospital
+    where HOSPITAL_ID = #{hospitalId,jdbcType=VARCHAR}
+  </delete>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.zjrc.sxzz.entity.Hospital" >
+    update sxzz_hospital
+    <set >
+      <if test="parentHospitalId != null" >
+        PARENT_HOSPITAL_ID = #{parentHospitalId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="abbreviation != null" >
+        ABBREVIATION = #{abbreviation,jdbcType=VARCHAR},
+      </if>
+      <if test="aliases != null" >
+        ALIASES = #{aliases,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null" >
+        AREA_ID = #{areaId,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="zip != null" >
+        ZIP = #{zip,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        LONGITUDE = #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null" >
+        LATITUDE = #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        LEVEL = #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="nature != null" >
+        NATURE = #{nature,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null" >
+        CATEGORY = #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null" >
+        PICTURE = #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        PHONE = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        FAX = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        MOBILE = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        QQ = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="wx != null" >
+        WX = #{wx,jdbcType=VARCHAR},
+      </if>
+      <if test="webUrl != null" >
+        WEB_URL = #{webUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="openState != null" >
+        OPEN_STATE = #{openState,jdbcType=VARCHAR},
+      </if>
+      <if test="openDate != null" >
+        OPEN_DATE = #{openDate,jdbcType=VARCHAR},
+      </if>
+      <if test="clinicState != null" >
+        CLINIC_STATE = #{clinicState,jdbcType=VARCHAR},
+      </if>
+      <if test="inspectionState != null" >
+        INSPECTION_STATE = #{inspectionState,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalizeState != null" >
+        HOSPITALIZE_STATE = #{hospitalizeState,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencyState != null" >
+        EMERGENCY_STATE = #{emergencyState,jdbcType=VARCHAR},
+      </if>
+      <if test="operationState != null" >
+        OPERATION_STATE = #{operationState,jdbcType=VARCHAR},
+      </if>
+      <if test="operationPlatformId != null" >
+        OPERATION_PLATFORM_ID = #{operationPlatformId,jdbcType=VARCHAR},
+      </if>
+      <if test="operationHospitalId != null" >
+        OPERATION_HOSPITAL_ID = #{operationHospitalId,jdbcType=VARCHAR},
+      </if>
+      <if test="operationContactName != null" >
+        OPERATION_CONTACT_NAME = #{operationContactName,jdbcType=VARCHAR},
+      </if>
+      <if test="operationContactMobile != null" >
+        OPERATION_CONTACT_MOBILE = #{operationContactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="operationContactPhone != null" >
+        OPERATION_CONTACT_PHONE = #{operationContactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="patientInfoState != null" >
+        PATIENT_INFO_STATE = #{patientInfoState,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalizeInRecordState != null" >
+        HOSPITALIZE_IN_RECORD_STATE = #{hospitalizeInRecordState,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalizeOutRecordState != null" >
+        HOSPITALIZE_OUT_RECORD_STATE = #{hospitalizeOutRecordState,jdbcType=VARCHAR},
+      </if>
+      <if test="inspectionExamReportState != null" >
+        INSPECTION_EXAM_REPORT_STATE = #{inspectionExamReportState,jdbcType=VARCHAR},
+      </if>
+      <if test="inspectionLisReportState != null" >
+        INSPECTION_LIS_REPORT_STATE = #{inspectionLisReportState,jdbcType=VARCHAR},
+      </if>
+      <if test="sortIndex != null" >
+        SORT_INDEX = #{sortIndex,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null" >
+        CREATE_USER_ID = #{createUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME = #{modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyUserId != null" >
+        MODIFY_USER_ID = #{modifyUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="clinicThirdPartState != null" >
+        CLINIC_THIRD_PART_STATE = #{clinicThirdPartState,jdbcType=VARCHAR},
+      </if>
+      <if test="inspectionThirdPartState != null" >
+        INSPECTION_THIRD_PART_STATE = #{inspectionThirdPartState,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalizeThirdPartState != null" >
+        HOSPITALIZE_THIRD_PART_STATE = #{hospitalizeThirdPartState,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencyThirdPartState != null" >
+        EMERGENCY_THIRD_PART_STATE = #{emergencyThirdPartState,jdbcType=VARCHAR},
+      </if>
+      <if test="operationThirdPartState != null" >
+        OPERATION_THIRD_PART_STATE = #{operationThirdPartState,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencyPlatformId != null" >
+        EMERGENCY_PLATFORM_ID = #{emergencyPlatformId,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencyHospitalId != null" >
+        EMERGENCY_HOSPITAL_ID = #{emergencyHospitalId,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencyContactName != null" >
+        EMERGENCY_CONTACT_NAME = #{emergencyContactName,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencyContactMobile != null" >
+        EMERGENCY_CONTACT_MOBILE = #{emergencyContactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencyContactPhone != null" >
+        EMERGENCY_CONTACT_PHONE = #{emergencyContactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalizePlatformId != null" >
+        HOSPITALIZE_PLATFORM_ID = #{hospitalizePlatformId,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalizeHospitalId != null" >
+        HOSPITALIZE_HOSPITAL_ID = #{hospitalizeHospitalId,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalizeContactType != null" >
+        HOSPITALIZE_CONTACT_TYPE = #{hospitalizeContactType,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalizeContactName != null" >
+        HOSPITALIZE_CONTACT_NAME = #{hospitalizeContactName,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalizeContactMobile != null" >
+        HOSPITALIZE_CONTACT_MOBILE = #{hospitalizeContactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalizeContactPhone != null" >
+        HOSPITALIZE_CONTACT_PHONE = #{hospitalizeContactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="inspectionPlatformId != null" >
+        INSPECTION_PLATFORM_ID = #{inspectionPlatformId,jdbcType=VARCHAR},
+      </if>
+      <if test="inspectionHospitalId != null" >
+        INSPECTION_HOSPITAL_ID = #{inspectionHospitalId,jdbcType=VARCHAR},
+      </if>
+      <if test="inspectionContactName != null" >
+        INSPECTION_CONTACT_NAME = #{inspectionContactName,jdbcType=VARCHAR},
+      </if>
+      <if test="inspectionContactMobile != null" >
+        INSPECTION_CONTACT_MOBILE = #{inspectionContactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="inspectionContactPhone != null" >
+        INSPECTION_CONTACT_PHONE = #{inspectionContactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="clinicPlatformId != null" >
+        CLINIC_PLATFORM_ID = #{clinicPlatformId,jdbcType=VARCHAR},
+      </if>
+      <if test="clinicInnerHispitalId != null" >
+        CLINIC_INNER_HISPITAL_ID = #{clinicInnerHispitalId,jdbcType=VARCHAR},
+      </if>
+      <if test="clinicContactName != null" >
+        CLINIC_CONTACT_NAME = #{clinicContactName,jdbcType=VARCHAR},
+      </if>
+      <if test="clinicContactMobile != null" >
+        CLINIC_CONTACT_MOBILE = #{clinicContactMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="clinicContactPhone != null" >
+        CLINIC_CONTACT_PHONE = #{clinicContactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="isSynCreated != null" >
+        is_syn_created = #{isSynCreated,jdbcType=VARCHAR},
+      </if>
+      <if test="isSynUpdated != null" >
+        is_syn_updated = #{isSynUpdated,jdbcType=VARCHAR},
+      </if>
+      <if test="isSynDeleated != null" >
+        is_syn_deleated = #{isSynDeleated,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalIdDing != null" >
+        hospital_id_ding = #{hospitalIdDing,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where HOSPITAL_ID = #{hospitalId,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- 获取待同步医院集 -->
+  <select id="getWaitSynHospitals" resultMap="BaseResultMap">
+	SELECT <include refid="Base_Column_List" />
+	FROM sxzz_hospital h
+	WHERE h.status = '0' AND (h.is_syn_created ='0' OR h.is_syn_created REGEXP '^2-[1,2]$') ;  
+  </select>
+</mapper>

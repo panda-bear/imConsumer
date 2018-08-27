@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zjrc.sxzz.dao.DeptMapper" >
+  <resultMap id="BaseResultMap" type="com.zjrc.sxzz.entity.Dept" >
+    <id column="DEPT_ID" property="deptId" jdbcType="VARCHAR" />
+    <result column="HOSPITAL_ID" property="hospitalId" jdbcType="VARCHAR" />
+    <result column="PARENT_DEPT_ID" property="parentDeptId" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="BUSINESS_TYPE" property="businessType" jdbcType="VARCHAR" />
+    <result column="GB_DEPT_CODE" property="gbDeptCode" jdbcType="VARCHAR" />
+    <result column="LEVEL" property="level" jdbcType="INTEGER" />
+    <result column="TYPE" property="type" jdbcType="DECIMAL" />
+    <result column="CATEGORY" property="category" jdbcType="VARCHAR" />
+    <result column="MIN_AGE" property="minAge" jdbcType="INTEGER" />
+    <result column="MAX_AGE" property="maxAge" jdbcType="INTEGER" />
+    <result column="PHONE" property="phone" jdbcType="VARCHAR" />
+    <result column="FAX" property="fax" jdbcType="VARCHAR" />
+    <result column="MOBILE" property="mobile" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="QQ" property="qq" jdbcType="VARCHAR" />
+    <result column="WX" property="wx" jdbcType="VARCHAR" />
+    <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
+    <result column="YYGH_DEPT_ID" property="yyghDeptId" jdbcType="VARCHAR" />
+    <result column="INNER_DEPT_ID" property="innerDeptId" jdbcType="VARCHAR" />
+    <result column="THIRD_DEPT_ID" property="thirdDeptId" jdbcType="VARCHAR" />
+    <result column="SORT_INDEX" property="sortIndex" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+    <result column="CREATE_USER_ID" property="createUserId" jdbcType="VARCHAR" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="VARCHAR" />
+    <result column="MODIFY_USER_ID" property="modifyUserId" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="is_syn_created" property="isSynCreated" jdbcType="VARCHAR" />
+    <result column="is_syn_updated" property="isSynUpdated" jdbcType="VARCHAR" />
+    <result column="is_syn_deleated" property="isSynDeleated" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    DEPT_ID, HOSPITAL_ID, PARENT_DEPT_ID, NAME, BUSINESS_TYPE, GB_DEPT_CODE, LEVEL, TYPE, 
+    CATEGORY, MIN_AGE, MAX_AGE, PHONE, FAX, MOBILE, EMAIL, QQ, WX, DESCRIPTION, YYGH_DEPT_ID, 
+    INNER_DEPT_ID, THIRD_DEPT_ID, SORT_INDEX, CREATE_TIME, CREATE_USER_ID, MODIFY_TIME, 
+    MODIFY_USER_ID, STATUS, is_syn_created, is_syn_updated, is_syn_deleated
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sxzz_dept
+    where DEPT_ID = #{deptId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sxzz_dept
+    where DEPT_ID = #{deptId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zjrc.sxzz.entity.Dept" >
+    insert into sxzz_dept (DEPT_ID, HOSPITAL_ID, PARENT_DEPT_ID, 
+      NAME, BUSINESS_TYPE, GB_DEPT_CODE, 
+      LEVEL, TYPE, CATEGORY, 
+      MIN_AGE, MAX_AGE, PHONE, 
+      FAX, MOBILE, EMAIL, 
+      QQ, WX, DESCRIPTION, 
+      YYGH_DEPT_ID, INNER_DEPT_ID, THIRD_DEPT_ID, 
+      SORT_INDEX, CREATE_TIME, CREATE_USER_ID, 
+      MODIFY_TIME, MODIFY_USER_ID, STATUS, 
+      is_syn_created, is_syn_updated, is_syn_deleated
+      )
+    values (#{deptId,jdbcType=VARCHAR}, #{hospitalId,jdbcType=VARCHAR}, #{parentDeptId,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{businessType,jdbcType=VARCHAR}, #{gbDeptCode,jdbcType=VARCHAR}, 
+      #{level,jdbcType=INTEGER}, #{type,jdbcType=DECIMAL}, #{category,jdbcType=VARCHAR}, 
+      #{minAge,jdbcType=INTEGER}, #{maxAge,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, 
+      #{fax,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{qq,jdbcType=VARCHAR}, #{wx,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{yyghDeptId,jdbcType=VARCHAR}, #{innerDeptId,jdbcType=VARCHAR}, #{thirdDeptId,jdbcType=VARCHAR}, 
+      #{sortIndex,jdbcType=INTEGER}, #{createTime,jdbcType=VARCHAR}, #{createUserId,jdbcType=VARCHAR}, 
+      #{modifyTime,jdbcType=VARCHAR}, #{modifyUserId,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{isSynCreated,jdbcType=VARCHAR}, #{isSynUpdated,jdbcType=VARCHAR}, #{isSynDeleated,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zjrc.sxzz.entity.Dept" >
+    insert into sxzz_dept
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="deptId != null" >
+        DEPT_ID,
+      </if>
+      <if test="hospitalId != null" >
+        HOSPITAL_ID,
+      </if>
+      <if test="parentDeptId != null" >
+        PARENT_DEPT_ID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="businessType != null" >
+        BUSINESS_TYPE,
+      </if>
+      <if test="gbDeptCode != null" >
+        GB_DEPT_CODE,
+      </if>
+      <if test="level != null" >
+        LEVEL,
+      </if>
+      <if test="type != null" >
+        TYPE,
+      </if>
+      <if test="category != null" >
+        CATEGORY,
+      </if>
+      <if test="minAge != null" >
+        MIN_AGE,
+      </if>
+      <if test="maxAge != null" >
+        MAX_AGE,
+      </if>
+      <if test="phone != null" >
+        PHONE,
+      </if>
+      <if test="fax != null" >
+        FAX,
+      </if>
+      <if test="mobile != null" >
+        MOBILE,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="qq != null" >
+        QQ,
+      </if>
+      <if test="wx != null" >
+        WX,
+      </if>
+      <if test="description != null" >
+        DESCRIPTION,
+      </if>
+      <if test="yyghDeptId != null" >
+        YYGH_DEPT_ID,
+      </if>
+      <if test="innerDeptId != null" >
+        INNER_DEPT_ID,
+      </if>
+      <if test="thirdDeptId != null" >
+        THIRD_DEPT_ID,
+      </if>
+      <if test="sortIndex != null" >
+        SORT_INDEX,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="createUserId != null" >
+        CREATE_USER_ID,
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME,
+      </if>
+      <if test="modifyUserId != null" >
+        MODIFY_USER_ID,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="isSynCreated != null" >
+        is_syn_created,
+      </if>
+      <if test="isSynUpdated != null" >
+        is_syn_updated,
+      </if>
+      <if test="isSynDeleated != null" >
+        is_syn_deleated,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="deptId != null" >
+        #{deptId,jdbcType=VARCHAR},
+      </if>
+      <if test="hospitalId != null" >
+        #{hospitalId,jdbcType=VARCHAR},
+      </if>
+      <if test="parentDeptId != null" >
+        #{parentDeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="businessType != null" >
+        #{businessType,jdbcType=VARCHAR},
+      </if>
+      <if test="gbDeptCode != null" >
+        #{gbDeptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=DECIMAL},
+      </if>
+      <if test="category != null" >
+        #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="minAge != null" >
+        #{minAge,jdbcType=INTEGER},
+      </if>
+      <if test="maxAge != null" >
+        #{maxAge,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="wx != null" >
+        #{wx,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="yyghDeptId != null" >
+        #{yyghDeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="innerDeptId != null" >
+        #{innerDeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdDeptId != null" >
+        #{thirdDeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="sortIndex != null" >
+        #{sortIndex,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null" >
+        #{createUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyUserId != null" >
+        #{modifyUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="isSynCreated != null" >
+        #{isSynCreated,jdbcType=VARCHAR},
+      </if>
+      <if test="isSynUpdated != null" >
+        #{isSynUpdated,jdbcType=VARCHAR},
+      </if>
+      <if test="isSynDeleated != null" >
+        #{isSynDeleated,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zjrc.sxzz.entity.Dept" >
+    update sxzz_dept
+    <set >
+      <if test="hospitalId != null" >
+        HOSPITAL_ID = #{hospitalId,jdbcType=VARCHAR},
+      </if>
+      <if test="parentDeptId != null" >
+        PARENT_DEPT_ID = #{parentDeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="businessType != null" >
+        BUSINESS_TYPE = #{businessType,jdbcType=VARCHAR},
+      </if>
+      <if test="gbDeptCode != null" >
+        GB_DEPT_CODE = #{gbDeptCode,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        LEVEL = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        TYPE = #{type,jdbcType=DECIMAL},
+      </if>
+      <if test="category != null" >
+        CATEGORY = #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="minAge != null" >
+        MIN_AGE = #{minAge,jdbcType=INTEGER},
+      </if>
+      <if test="maxAge != null" >
+        MAX_AGE = #{maxAge,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null" >
+        PHONE = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        FAX = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        MOBILE = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        QQ = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="wx != null" >
+        WX = #{wx,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="yyghDeptId != null" >
+        YYGH_DEPT_ID = #{yyghDeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="innerDeptId != null" >
+        INNER_DEPT_ID = #{innerDeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdDeptId != null" >
+        THIRD_DEPT_ID = #{thirdDeptId,jdbcType=VARCHAR},
+      </if>
+      <if test="sortIndex != null" >
+        SORT_INDEX = #{sortIndex,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null" >
+        CREATE_USER_ID = #{createUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME = #{modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyUserId != null" >
+        MODIFY_USER_ID = #{modifyUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="isSynCreated != null" >
+        is_syn_created = #{isSynCreated,jdbcType=VARCHAR},
+      </if>
+      <if test="isSynUpdated != null" >
+        is_syn_updated = #{isSynUpdated,jdbcType=VARCHAR},
+      </if>
+      <if test="isSynDeleated != null" >
+        is_syn_deleated = #{isSynDeleated,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where DEPT_ID = #{deptId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zjrc.sxzz.entity.Dept" >
+    update sxzz_dept
+    set HOSPITAL_ID = #{hospitalId,jdbcType=VARCHAR},
+      PARENT_DEPT_ID = #{parentDeptId,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      BUSINESS_TYPE = #{businessType,jdbcType=VARCHAR},
+      GB_DEPT_CODE = #{gbDeptCode,jdbcType=VARCHAR},
+      LEVEL = #{level,jdbcType=INTEGER},
+      TYPE = #{type,jdbcType=DECIMAL},
+      CATEGORY = #{category,jdbcType=VARCHAR},
+      MIN_AGE = #{minAge,jdbcType=INTEGER},
+      MAX_AGE = #{maxAge,jdbcType=INTEGER},
+      PHONE = #{phone,jdbcType=VARCHAR},
+      FAX = #{fax,jdbcType=VARCHAR},
+      MOBILE = #{mobile,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      QQ = #{qq,jdbcType=VARCHAR},
+      WX = #{wx,jdbcType=VARCHAR},
+      DESCRIPTION = #{description,jdbcType=VARCHAR},
+      YYGH_DEPT_ID = #{yyghDeptId,jdbcType=VARCHAR},
+      INNER_DEPT_ID = #{innerDeptId,jdbcType=VARCHAR},
+      THIRD_DEPT_ID = #{thirdDeptId,jdbcType=VARCHAR},
+      SORT_INDEX = #{sortIndex,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      CREATE_USER_ID = #{createUserId,jdbcType=VARCHAR},
+      MODIFY_TIME = #{modifyTime,jdbcType=VARCHAR},
+      MODIFY_USER_ID = #{modifyUserId,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      is_syn_created = #{isSynCreated,jdbcType=VARCHAR},
+      is_syn_updated = #{isSynUpdated,jdbcType=VARCHAR},
+      is_syn_deleated = #{isSynDeleated,jdbcType=VARCHAR}
+    where DEPT_ID = #{deptId,jdbcType=VARCHAR}
+  </update>
+</mapper>

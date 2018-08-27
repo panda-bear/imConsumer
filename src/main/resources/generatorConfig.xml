@@ -17,22 +17,32 @@
                         password="sxzz@rc2015"/>
 
         <javaModelGenerator targetPackage="com.zjrc.sxzz.entity"
-                            targetProject="F:/sxzz_workspace/imClient/src/main/java">
+                            targetProject="F:/sxzz_workspace/imConsumer/src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
         <sqlMapGenerator targetPackage="mapper"
-                         targetProject="F:/sxzz_workspace/imClient/src/main/resources">
+                         targetProject="F:/sxzz_workspace/imConsumer/src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <javaClientGenerator targetPackage="com.zjrc.sxzz.dao"
-                             targetProject="F:/sxzz_workspace/imClient/src/main/java" type="XMLMAPPER">
+                             targetProject="F:/sxzz_workspace/imConsumer/src/main/java" type="XMLMAPPER">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="sxzz_account" domainObjectName="Account"
+        <table tableName="sxzz_hospital" domainObjectName="Hospital"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table tableName="sxzz_dept" domainObjectName="Dept"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table tableName="sxzz_doctor" domainObjectName="Doctor"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">

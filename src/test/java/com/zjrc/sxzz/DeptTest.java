@@ -1,25 +1,25 @@
 package com.zjrc.sxzz;
 
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
+import com.zjrc.sxzz.synTask.SynHospitalTask;
 
 public class DeptTest extends DingTest {
 	
+	@Autowired
+	private SynHospitalTask synHosTask;
 	
+	/**测试医院同步
+	 * @throws InterruptedException 
+	 * 
+	 */
 	@Test
-	public void createDept() {
-		JSONObject obj = new JSONObject();
-		obj.put("name", "医院D");
-		obj.put("parentid", "1");
-		String res = imclient.createDept(obj.toJSONString());
-		log.info("创建部门------------------{}" , res);
+	public void testSynHospital() throws InterruptedException {
+		Thread t = new Thread(synHosTask);
+		t.start();
+		t.join();
 		
-		JSONObject o = JSON.parseObject(res);
-		String id  = o.getString("id");
-		res = imclient.deleteDept(id);
-		log.info("删除部门------------------{}" , res);
 	}
 	
 }

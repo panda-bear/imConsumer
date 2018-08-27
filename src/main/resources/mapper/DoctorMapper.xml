@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zjrc.sxzz.dao.DoctorMapper" >
+  <resultMap id="BaseResultMap" type="com.zjrc.sxzz.entity.Doctor" >
+    <id column="DOCTOR_ID" property="doctorId" jdbcType="VARCHAR" />
+    <result column="ACCOUNT_ID" property="accountId" jdbcType="INTEGER" />
+    <result column="HOSPITAL_ID" property="hospitalId" jdbcType="VARCHAR" />
+    <result column="LOGIN_NAME" property="loginName" jdbcType="VARCHAR" />
+    <result column="CODE" property="code" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+    <result column="ROLE_TYPE" property="roleType" jdbcType="VARCHAR" />
+    <result column="MOBILE" property="mobile" jdbcType="VARCHAR" />
+    <result column="PHONE" property="phone" jdbcType="VARCHAR" />
+    <result column="SEX" property="sex" jdbcType="VARCHAR" />
+    <result column="TECHNICAL" property="technical" jdbcType="INTEGER" />
+    <result column="SORT_INDEX" property="sortIndex" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+    <result column="CREATE_USER_ID" property="createUserId" jdbcType="VARCHAR" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="VARCHAR" />
+    <result column="MODIFY_USER_ID" property="modifyUserId" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="INNER_DOCT_ID" property="innerDoctId" jdbcType="VARCHAR" />
+    <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
+    <result column="GOODAT" property="goodat" jdbcType="VARCHAR" />
+    <result column="is_syn_created" property="isSynCreated" jdbcType="VARCHAR" />
+    <result column="is_syn_updated" property="isSynUpdated" jdbcType="VARCHAR" />
+    <result column="is_syn_deleated" property="isSynDeleated" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    DOCTOR_ID, ACCOUNT_ID, HOSPITAL_ID, LOGIN_NAME, CODE, NAME, PASSWORD, ROLE_TYPE, 
+    MOBILE, PHONE, SEX, TECHNICAL, SORT_INDEX, CREATE_TIME, CREATE_USER_ID, MODIFY_TIME, 
+    MODIFY_USER_ID, STATUS, INNER_DOCT_ID, DESCRIPTION, GOODAT, is_syn_created, is_syn_updated, 
+    is_syn_deleated
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sxzz_doctor
+    where DOCTOR_ID = #{doctorId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sxzz_doctor
+    where DOCTOR_ID = #{doctorId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zjrc.sxzz.entity.Doctor" >
+    insert into sxzz_doctor (DOCTOR_ID, ACCOUNT_ID, HOSPITAL_ID, 
+      LOGIN_NAME, CODE, NAME, 
+      PASSWORD, ROLE_TYPE, MOBILE, 
+      PHONE, SEX, TECHNICAL, 
+      SORT_INDEX, CREATE_TIME, CREATE_USER_ID, 
+      MODIFY_TIME, MODIFY_USER_ID, STATUS, 
+      INNER_DOCT_ID, DESCRIPTION, GOODAT, 
+      is_syn_created, is_syn_updated, is_syn_deleated
+      )
+    values (#{doctorId,jdbcType=VARCHAR}, #{accountId,jdbcType=INTEGER}, #{hospitalId,jdbcType=VARCHAR}, 
+      #{loginName,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{roleType,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{technical,jdbcType=INTEGER}, 
+      #{sortIndex,jdbcType=INTEGER}, #{createTime,jdbcType=VARCHAR}, #{createUserId,jdbcType=VARCHAR}, 
+      #{modifyTime,jdbcType=VARCHAR}, #{modifyUserId,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{innerDoctId,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{goodat,jdbcType=VARCHAR}, 
+      #{isSynCreated,jdbcType=VARCHAR}, #{isSynUpdated,jdbcType=VARCHAR}, #{isSynDeleated,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zjrc.sxzz.entity.Doctor" >
+    insert into sxzz_doctor
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="doctorId != null" >
+        DOCTOR_ID,
+      </if>
+      <if test="accountId != null" >
+        ACCOUNT_ID,
+      </if>
+      <if test="hospitalId != null" >
+        HOSPITAL_ID,
+      </if>
+      <if test="loginName != null" >
+        LOGIN_NAME,
+      </if>
+      <if test="code != null" >
+        CODE,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="password != null" >
+        PASSWORD,
+      </if>
+      <if test="roleType != null" >
+        ROLE_TYPE,
+      </if>
+      <if test="mobile != null" >
+        MOBILE,
+      </if>
+      <if test="phone != null" >
+        PHONE,
+      </if>
+      <if test="sex != null" >
+        SEX,
+      </if>
+      <if test="technical != null" >
+        TECHNICAL,
+      </if>
+      <if test="sortIndex != null" >
+        SORT_INDEX,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="createUserId != null" >
+        CREATE_USER_ID,
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME,
+      </if>
+      <if test="modifyUserId != null" >
+        MODIFY_USER_ID,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="innerDoctId != null" >
+        INNER_DOCT_ID,
+      </if>
+      <if test="description != null" >
+        DESCRIPTION,
+      </if>
+      <if test="goodat != null" >
+        GOODAT,
+      </if>
+      <if test="isSynCreated != null" >
+        is_syn_created,
+      </if>
+      <if test="isSynUpdated != null" >
+        is_syn_updated,
+      </if>
+      <if test="isSynDeleated != null" >
+        is_syn_deleated,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="doctorId != null" >
+        #{doctorId,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null" >
+        #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="hospitalId != null" >
+        #{hospitalId,jdbcType=VARCHAR},
+      </if>
+      <if test="loginName != null" >
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="roleType != null" >
+        #{roleType,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="technical != null" >
+        #{technical,jdbcType=INTEGER},
+      </if>
+      <if test="sortIndex != null" >
+        #{sortIndex,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null" >
+        #{createUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyUserId != null" >
+        #{modifyUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="innerDoctId != null" >
+        #{innerDoctId,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="goodat != null" >
+        #{goodat,jdbcType=VARCHAR},
+      </if>
+      <if test="isSynCreated != null" >
+        #{isSynCreated,jdbcType=VARCHAR},
+      </if>
+      <if test="isSynUpdated != null" >
+        #{isSynUpdated,jdbcType=VARCHAR},
+      </if>
+      <if test="isSynDeleated != null" >
+        #{isSynDeleated,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zjrc.sxzz.entity.Doctor" >
+    update sxzz_doctor
+    <set >
+      <if test="accountId != null" >
+        ACCOUNT_ID = #{accountId,jdbcType=INTEGER},
+      </if>
+      <if test="hospitalId != null" >
+        HOSPITAL_ID = #{hospitalId,jdbcType=VARCHAR},
+      </if>
+      <if test="loginName != null" >
+        LOGIN_NAME = #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        CODE = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="roleType != null" >
+        ROLE_TYPE = #{roleType,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        MOBILE = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        PHONE = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        SEX = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="technical != null" >
+        TECHNICAL = #{technical,jdbcType=INTEGER},
+      </if>
+      <if test="sortIndex != null" >
+        SORT_INDEX = #{sortIndex,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null" >
+        CREATE_USER_ID = #{createUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME = #{modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyUserId != null" >
+        MODIFY_USER_ID = #{modifyUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="innerDoctId != null" >
+        INNER_DOCT_ID = #{innerDoctId,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="goodat != null" >
+        GOODAT = #{goodat,jdbcType=VARCHAR},
+      </if>
+      <if test="isSynCreated != null" >
+        is_syn_created = #{isSynCreated,jdbcType=VARCHAR},
+      </if>
+      <if test="isSynUpdated != null" >
+        is_syn_updated = #{isSynUpdated,jdbcType=VARCHAR},
+      </if>
+      <if test="isSynDeleated != null" >
+        is_syn_deleated = #{isSynDeleated,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where DOCTOR_ID = #{doctorId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zjrc.sxzz.entity.Doctor" >
+    update sxzz_doctor
+    set ACCOUNT_ID = #{accountId,jdbcType=INTEGER},
+      HOSPITAL_ID = #{hospitalId,jdbcType=VARCHAR},
+      LOGIN_NAME = #{loginName,jdbcType=VARCHAR},
+      CODE = #{code,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      PASSWORD = #{password,jdbcType=VARCHAR},
+      ROLE_TYPE = #{roleType,jdbcType=VARCHAR},
+      MOBILE = #{mobile,jdbcType=VARCHAR},
+      PHONE = #{phone,jdbcType=VARCHAR},
+      SEX = #{sex,jdbcType=VARCHAR},
+      TECHNICAL = #{technical,jdbcType=INTEGER},
+      SORT_INDEX = #{sortIndex,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      CREATE_USER_ID = #{createUserId,jdbcType=VARCHAR},
+      MODIFY_TIME = #{modifyTime,jdbcType=VARCHAR},
+      MODIFY_USER_ID = #{modifyUserId,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      INNER_DOCT_ID = #{innerDoctId,jdbcType=VARCHAR},
+      DESCRIPTION = #{description,jdbcType=VARCHAR},
+      GOODAT = #{goodat,jdbcType=VARCHAR},
+      is_syn_created = #{isSynCreated,jdbcType=VARCHAR},
+      is_syn_updated = #{isSynUpdated,jdbcType=VARCHAR},
+      is_syn_deleated = #{isSynDeleated,jdbcType=VARCHAR}
+    where DOCTOR_ID = #{doctorId,jdbcType=VARCHAR}
+  </update>
+</mapper>
