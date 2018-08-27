@@ -61,6 +61,8 @@ public class Dept {
 
     private String isSynDeleated;
 
+    private String deptIdDing;
+
     public String getDeptId() {
         return deptId;
     }
@@ -299,5 +301,13 @@ public class Dept {
 
     public void setIsSynDeleated(String isSynDeleated) {
         this.isSynDeleated = isSynDeleated == null ? null : isSynDeleated.trim();
+    }
+
+    public String getDeptIdDing() {
+        return deptIdDing;
+    }
+
+    public void setDeptIdDing(String deptIdDing) {
+        this.deptIdDing = deptIdDing == null ? null : deptIdDing.trim();
     }
 }
