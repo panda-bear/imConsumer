@@ -15,8 +15,18 @@ public interface HospitalMapper {
 
     int updateByPrimaryKeySelective(Hospital record);
     
-    /**获取待同步医院集
+    /**获取待同步创建医院集
      * @return
      */
-    List<Hospital> getWaitSynHospitals();
+    List<Hospital> getWaitSynCreateHospitals();
+    
+    /**获取待同步更新医院集
+     * @return
+     */
+    List<Hospital> getWaitSynUpdateHospitals();
+    
+    /**获取待同步删除医院集
+     * @return
+     */
+    List<Hospital> getWaitSynDeleteHospitals();
 }

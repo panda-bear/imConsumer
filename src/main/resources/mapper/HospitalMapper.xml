@@ -339,10 +339,26 @@
     where HOSPITAL_ID = #{hospitalId,jdbcType=VARCHAR}
   </update>
   
-  <!-- 获取待同步医院集 -->
-  <select id="getWaitSynHospitals" resultMap="BaseResultMap">
+  <!-- 获取待同步创建医院集 -->
+  <select id="getWaitSynCreateHospitals" resultMap="BaseResultMap">
 	SELECT <include refid="Base_Column_List" />
 	FROM sxzz_hospital h
 	WHERE h.status = '0' AND (h.is_syn_created ='0' OR h.is_syn_created REGEXP '^2-[1,2]$') ;  
   </select>
+  
+  <!-- 获取待同步更新医院集 -->
+  <select id="getWaitSynUpdateHospitals" resultMap="BaseResultMap">
+	SELECT <include refid="Base_Column_List" />
+	FROM sxzz_hospital h
+	WHERE  h.status = '0' AND h.is_syn_created = '1' AND (h.is_syn_updated = '0' OR h.is_syn_updated REGEXP '^2-[1,2]$')  
+  </select>  
+  
+  <!-- 获取待同步删除医院集 -->
+  <select id="getWaitSynDeleteHospitals" resultMap="BaseResultMap">
+	SELECT <include refid="Base_Column_List" />
+	FROM sxzz_hospital h
+	WHERE  h.status = '1' AND h.is_syn_created = '1' AND (h.is_syn_deleated = '0' OR h.is_syn_deleated REGEXP '^2-[1,2]$')  
+  </select>    
+  
+  
 </mapper>

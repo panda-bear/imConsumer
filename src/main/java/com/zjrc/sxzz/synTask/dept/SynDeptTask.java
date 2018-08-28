@@ -1,10 +1,10 @@
-package com.zjrc.sxzz.synTask;
+package com.zjrc.sxzz.synTask.dept;
 
-/**同步医生任务
+/**同步业务科室任务
  * @author Administrator
  *
  */
-public class SynDoctorTask implements Runnable {
+public class SynDeptTask implements Runnable {
 
 	@Override
 	public void run() {
