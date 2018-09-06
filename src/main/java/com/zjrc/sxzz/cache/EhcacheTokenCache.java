@@ -33,7 +33,7 @@ public class EhcacheTokenCache implements ITokenCache {
 	}
 	
 	@Override
-	public String getToken() {
+	public synchronized String getToken() {
 		Element ele = cache.get(KEY);
 		if (ele == null) {
 			ele = new Element(KEY , fetchToken());

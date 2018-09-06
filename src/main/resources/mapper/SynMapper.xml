@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zjrc.sxzz.dao.SynMapper" >
+  <resultMap id="BaseResultMap" type="com.zjrc.sxzz.entity.Syn" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="business_id" property="businessId" jdbcType="VARCHAR" />
+    <result column="business_name" property="businessName" jdbcType="VARCHAR" />
+    <result column="business_type" property="businessType" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="VARCHAR" />
+    <result column="syn_type" property="synType" jdbcType="VARCHAR" />
+    <result column="syn_state" property="synState" jdbcType="VARCHAR" />
+    <result column="syn_result" property="synResult" jdbcType="VARCHAR" />
+    <result column="syn_nums" property="synNums" jdbcType="INTEGER" />
+    <result column="syn_response" property="synResponse" jdbcType="VARCHAR" />
+    <result column="syn_desc" property="synDesc" jdbcType="VARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="syn_date" property="synDate" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, business_id, business_name, business_type, create_date, syn_type, syn_state, 
+    syn_result, syn_nums, syn_response, syn_desc, remarks, syn_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sxzz_syn
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sxzz_syn
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zjrc.sxzz.entity.Syn" >
+    insert into sxzz_syn (id, business_id, business_name, 
+      business_type, create_date, syn_type, 
+      syn_state, syn_result, syn_nums, 
+      syn_response, syn_desc, remarks, 
+      syn_date)
+    values (#{id,jdbcType=INTEGER}, #{businessId,jdbcType=VARCHAR}, #{businessName,jdbcType=VARCHAR}, 
+      #{businessType,jdbcType=VARCHAR}, #{createDate,jdbcType=VARCHAR}, #{synType,jdbcType=VARCHAR}, 
+      #{synState,jdbcType=VARCHAR}, #{synResult,jdbcType=VARCHAR}, #{synNums,jdbcType=INTEGER}, 
+      #{synResponse,jdbcType=VARCHAR}, #{synDesc,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, 
+      #{synDate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zjrc.sxzz.entity.Syn" >
+    insert into sxzz_syn
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="businessId != null" >
+        business_id,
+      </if>
+      <if test="businessName != null" >
+        business_name,
+      </if>
+      <if test="businessType != null" >
+        business_type,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="synType != null" >
+        syn_type,
+      </if>
+      <if test="synState != null" >
+        syn_state,
+      </if>
+      <if test="synResult != null" >
+        syn_result,
+      </if>
+      <if test="synNums != null" >
+        syn_nums,
+      </if>
+      <if test="synResponse != null" >
+        syn_response,
+      </if>
+      <if test="synDesc != null" >
+        syn_desc,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="synDate != null" >
+        syn_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="businessId != null" >
+        #{businessId,jdbcType=VARCHAR},
+      </if>
+      <if test="businessName != null" >
+        #{businessName,jdbcType=VARCHAR},
+      </if>
+      <if test="businessType != null" >
+        #{businessType,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="synType != null" >
+        #{synType,jdbcType=VARCHAR},
+      </if>
+      <if test="synState != null" >
+        #{synState,jdbcType=VARCHAR},
+      </if>
+      <if test="synResult != null" >
+        #{synResult,jdbcType=VARCHAR},
+      </if>
+      <if test="synNums != null" >
+        #{synNums,jdbcType=INTEGER},
+      </if>
+      <if test="synResponse != null" >
+        #{synResponse,jdbcType=VARCHAR},
+      </if>
+      <if test="synDesc != null" >
+        #{synDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="synDate != null" >
+        #{synDate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zjrc.sxzz.entity.Syn" >
+    update sxzz_syn
+    <set >
+      <if test="businessId != null" >
+        business_id = #{businessId,jdbcType=VARCHAR},
+      </if>
+      <if test="businessName != null" >
+        business_name = #{businessName,jdbcType=VARCHAR},
+      </if>
+      <if test="businessType != null" >
+        business_type = #{businessType,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="synType != null" >
+        syn_type = #{synType,jdbcType=VARCHAR},
+      </if>
+      <if test="synState != null" >
+        syn_state = #{synState,jdbcType=VARCHAR},
+      </if>
+      <if test="synResult != null" >
+        syn_result = #{synResult,jdbcType=VARCHAR},
+      </if>
+      <if test="synNums != null" >
+        syn_nums = #{synNums,jdbcType=INTEGER},
+      </if>
+      <if test="synResponse != null" >
+        syn_response = #{synResponse,jdbcType=VARCHAR},
+      </if>
+      <if test="synDesc != null" >
+        syn_desc = #{synDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="synDate != null" >
+        syn_date = #{synDate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zjrc.sxzz.entity.Syn" >
+    update sxzz_syn
+    set business_id = #{businessId,jdbcType=VARCHAR},
+      business_name = #{businessName,jdbcType=VARCHAR},
+      business_type = #{businessType,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=VARCHAR},
+      syn_type = #{synType,jdbcType=VARCHAR},
+      syn_state = #{synState,jdbcType=VARCHAR},
+      syn_result = #{synResult,jdbcType=VARCHAR},
+      syn_nums = #{synNums,jdbcType=INTEGER},
+      syn_response = #{synResponse,jdbcType=VARCHAR},
+      syn_desc = #{synDesc,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      syn_date = #{synDate,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getWaitBusinessDatas" parameterType="Map" resultMap="BaseResultMap"> 
+ 	SELECT 
+ 	<include refid="Base_Column_List" />
+	FROM sxzz_syn s
+	WHERE s.syn_state = '0' OR (s.syn_state = '1' AND s.syn_result = '1' AND s.syn_nums &lt; 3)
+	ORDER BY s.create_date ASC
+	LIMIT #{delNums}
+  </select>   
+</mapper>

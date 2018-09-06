@@ -24,6 +24,12 @@ public abstract class ImClientProduct {
 	 */
 	public abstract String createDept(String jsonStr);
 	
+	/**获取部门详情
+	 * @param deptIdDing
+	 * @return
+	 */
+	public abstract String selectDeptById(String deptIdDing);
+	
 	/**更新医院或科室
 	 * @param token
 	 * @param jsonStr
@@ -46,6 +52,12 @@ public abstract class ImClientProduct {
 	 */
 	public abstract String createDoctor( String jsonStr);
 	
+	
+	/**获取成员详情
+	 * @param doctorIdDing
+	 * @return
+	 */
+	public abstract String selectDoctorById(String doctorId);
 	
 	/**更新医生信息
 	 * @param token

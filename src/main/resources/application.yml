@@ -18,7 +18,11 @@ mybatis:
 server:
   servlet:
     context-path: /imConsumer #工程项目名称
-    
+
+logging:
+  level:
+    com.zjrc.sxzz.dao: DEBUG
+
 ---
 #---------------开发配置
 spring:

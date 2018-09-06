@@ -27,4 +27,10 @@ public class DoctorTest extends DingTest {
 		String res = imclient.createDoctor(o.toJSONString());
 		log.info("创建医生结果------{}", res);
 	}
+	
+	@Test
+	public void selectDoctor() {
+		String res = HttpClientUtil.doGet("https://oapi.dingtalk.com/user/get?userid=123&access_token="+token);
+		log.info(res);
+	}	
 }

@@ -29,16 +29,13 @@
     <result column="MODIFY_TIME" property="modifyTime" jdbcType="VARCHAR" />
     <result column="MODIFY_USER_ID" property="modifyUserId" jdbcType="VARCHAR" />
     <result column="STATUS" property="status" jdbcType="VARCHAR" />
-    <result column="is_syn_created" property="isSynCreated" jdbcType="VARCHAR" />
-    <result column="is_syn_updated" property="isSynUpdated" jdbcType="VARCHAR" />
-    <result column="is_syn_deleated" property="isSynDeleated" jdbcType="VARCHAR" />
     <result column="dept_id_ding" property="deptIdDing" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     DEPT_ID, HOSPITAL_ID, PARENT_DEPT_ID, NAME, BUSINESS_TYPE, GB_DEPT_CODE, LEVEL, TYPE, 
     CATEGORY, MIN_AGE, MAX_AGE, PHONE, FAX, MOBILE, EMAIL, QQ, WX, DESCRIPTION, YYGH_DEPT_ID, 
     INNER_DEPT_ID, THIRD_DEPT_ID, SORT_INDEX, CREATE_TIME, CREATE_USER_ID, MODIFY_TIME, 
-    MODIFY_USER_ID, STATUS, is_syn_created, is_syn_updated, is_syn_deleated, dept_id_ding
+    MODIFY_USER_ID, STATUS, dept_id_ding
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -60,7 +57,6 @@
       YYGH_DEPT_ID, INNER_DEPT_ID, THIRD_DEPT_ID, 
       SORT_INDEX, CREATE_TIME, CREATE_USER_ID, 
       MODIFY_TIME, MODIFY_USER_ID, STATUS, 
-      is_syn_created, is_syn_updated, is_syn_deleated, 
       dept_id_ding)
     values (#{deptId,jdbcType=VARCHAR}, #{hospitalId,jdbcType=VARCHAR}, #{parentDeptId,jdbcType=VARCHAR}, 
       #{name,jdbcType=VARCHAR}, #{businessType,jdbcType=VARCHAR}, #{gbDeptCode,jdbcType=VARCHAR}, 
@@ -71,7 +67,6 @@
       #{yyghDeptId,jdbcType=VARCHAR}, #{innerDeptId,jdbcType=VARCHAR}, #{thirdDeptId,jdbcType=VARCHAR}, 
       #{sortIndex,jdbcType=INTEGER}, #{createTime,jdbcType=VARCHAR}, #{createUserId,jdbcType=VARCHAR}, 
       #{modifyTime,jdbcType=VARCHAR}, #{modifyUserId,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
-      #{isSynCreated,jdbcType=VARCHAR}, #{isSynUpdated,jdbcType=VARCHAR}, #{isSynDeleated,jdbcType=VARCHAR}, 
       #{deptIdDing,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.zjrc.sxzz.entity.Dept" >
@@ -157,15 +152,6 @@
       </if>
       <if test="status != null" >
         STATUS,
-      </if>
-      <if test="isSynCreated != null" >
-        is_syn_created,
-      </if>
-      <if test="isSynUpdated != null" >
-        is_syn_updated,
-      </if>
-      <if test="isSynDeleated != null" >
-        is_syn_deleated,
       </if>
       <if test="deptIdDing != null" >
         dept_id_ding,
@@ -253,15 +239,6 @@
       <if test="status != null" >
         #{status,jdbcType=VARCHAR},
       </if>
-      <if test="isSynCreated != null" >
-        #{isSynCreated,jdbcType=VARCHAR},
-      </if>
-      <if test="isSynUpdated != null" >
-        #{isSynUpdated,jdbcType=VARCHAR},
-      </if>
-      <if test="isSynDeleated != null" >
-        #{isSynDeleated,jdbcType=VARCHAR},
-      </if>
       <if test="deptIdDing != null" >
         #{deptIdDing,jdbcType=VARCHAR},
       </if>
@@ -348,15 +325,6 @@
       <if test="status != null" >
         STATUS = #{status,jdbcType=VARCHAR},
       </if>
-      <if test="isSynCreated != null" >
-        is_syn_created = #{isSynCreated,jdbcType=VARCHAR},
-      </if>
-      <if test="isSynUpdated != null" >
-        is_syn_updated = #{isSynUpdated,jdbcType=VARCHAR},
-      </if>
-      <if test="isSynDeleated != null" >
-        is_syn_deleated = #{isSynDeleated,jdbcType=VARCHAR},
-      </if>
       <if test="deptIdDing != null" >
         dept_id_ding = #{deptIdDing,jdbcType=VARCHAR},
       </if>
@@ -391,10 +359,13 @@
       MODIFY_TIME = #{modifyTime,jdbcType=VARCHAR},
       MODIFY_USER_ID = #{modifyUserId,jdbcType=VARCHAR},
       STATUS = #{status,jdbcType=VARCHAR},
-      is_syn_created = #{isSynCreated,jdbcType=VARCHAR},
-      is_syn_updated = #{isSynUpdated,jdbcType=VARCHAR},
-      is_syn_deleated = #{isSynDeleated,jdbcType=VARCHAR},
       dept_id_ding = #{deptIdDing,jdbcType=VARCHAR}
     where DEPT_ID = #{deptId,jdbcType=VARCHAR}
   </update>
+  
+  <select id="getAbnormalOneDept" resultMap="BaseResultMap" parameterType="Map">
+	SELECT <include refid="Base_Column_List" />
+	FROM sxzz_dept d
+	WHERE d.status = '0' AND d.name = #{deptName} AND d.level = 1 AND d.HOSPITAL_ID = #{hospitalId}
+  </select>
 </mapper>

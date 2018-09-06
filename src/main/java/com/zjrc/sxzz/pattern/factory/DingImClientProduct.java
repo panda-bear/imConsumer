@@ -54,4 +54,14 @@ public class DingImClientProduct extends ImClientProduct{
 		return HttpClientUtil.doGet(urlPrefix+"/user/delete?access_token="+tokenCache.getToken()+"&userid="+id);
 	}
 
+	@Override
+	public String selectDeptById(String deptIdDing) {
+		return HttpClientUtil.doGet(urlPrefix+"/department/get?access_token="+tokenCache.getToken()+"&id="+deptIdDing);
+	}
+
+	@Override
+	public String selectDoctorById(String doctorId) {
+		return HttpClientUtil.doGet(urlPrefix+"/user/get?access_token="+tokenCache.getToken()+"&id="+doctorId);
+	}
+
 }

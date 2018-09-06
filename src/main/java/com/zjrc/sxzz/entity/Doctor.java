@@ -43,12 +43,6 @@ public class Doctor {
 
     private String goodat;
 
-    private String isSynCreated;
-
-    private String isSynUpdated;
-
-    private String isSynDeleated;
-
     public String getDoctorId() {
         return doctorId;
     }
@@ -215,29 +209,5 @@ public class Doctor {
 
     public void setGoodat(String goodat) {
         this.goodat = goodat == null ? null : goodat.trim();
-    }
-
-    public String getIsSynCreated() {
-        return isSynCreated;
-    }
-
-    public void setIsSynCreated(String isSynCreated) {
-        this.isSynCreated = isSynCreated == null ? null : isSynCreated.trim();
-    }
-
-    public String getIsSynUpdated() {
-        return isSynUpdated;
-    }
-
-    public void setIsSynUpdated(String isSynUpdated) {
-        this.isSynUpdated = isSynUpdated == null ? null : isSynUpdated.trim();
-    }
-
-    public String getIsSynDeleated() {
-        return isSynDeleated;
-    }
-
-    public void setIsSynDeleated(String isSynDeleated) {
-        this.isSynDeleated = isSynDeleated == null ? null : isSynDeleated.trim();
     }
 }

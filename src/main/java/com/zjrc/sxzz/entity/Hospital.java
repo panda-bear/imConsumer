@@ -145,12 +145,6 @@ public class Hospital {
 
     private String clinicContactPhone;
 
-    private String isSynCreated;
-
-    private String isSynUpdated;
-
-    private String isSynDeleated;
-    
     private String hospitalIdDing;
 
     public String getHospitalId() {
@@ -729,36 +723,11 @@ public class Hospital {
         this.clinicContactPhone = clinicContactPhone == null ? null : clinicContactPhone.trim();
     }
 
-    public String getIsSynCreated() {
-        return isSynCreated;
+    public String getHospitalIdDing() {
+        return hospitalIdDing;
     }
 
-    public void setIsSynCreated(String isSynCreated) {
-        this.isSynCreated = isSynCreated == null ? null : isSynCreated.trim();
+    public void setHospitalIdDing(String hospitalIdDing) {
+        this.hospitalIdDing = hospitalIdDing == null ? null : hospitalIdDing.trim();
     }
-
-    public String getIsSynUpdated() {
-        return isSynUpdated;
-    }
-
-    public void setIsSynUpdated(String isSynUpdated) {
-        this.isSynUpdated = isSynUpdated == null ? null : isSynUpdated.trim();
-    }
-
-    public String getIsSynDeleated() {
-        return isSynDeleated;
-    }
-
-    public void setIsSynDeleated(String isSynDeleated) {
-        this.isSynDeleated = isSynDeleated == null ? null : isSynDeleated.trim();
-    }
-
-	public String getHospitalIdDing() {
-		return hospitalIdDing;
-	}
-
-	public void setHospitalIdDing(String hospitalIdDing) {
-		this.hospitalIdDing = hospitalIdDing;
-	}
-    
 }

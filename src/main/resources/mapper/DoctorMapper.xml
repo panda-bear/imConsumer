@@ -23,15 +23,11 @@
     <result column="INNER_DOCT_ID" property="innerDoctId" jdbcType="VARCHAR" />
     <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
     <result column="GOODAT" property="goodat" jdbcType="VARCHAR" />
-    <result column="is_syn_created" property="isSynCreated" jdbcType="VARCHAR" />
-    <result column="is_syn_updated" property="isSynUpdated" jdbcType="VARCHAR" />
-    <result column="is_syn_deleated" property="isSynDeleated" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     DOCTOR_ID, ACCOUNT_ID, HOSPITAL_ID, LOGIN_NAME, CODE, NAME, PASSWORD, ROLE_TYPE, 
     MOBILE, PHONE, SEX, TECHNICAL, SORT_INDEX, CREATE_TIME, CREATE_USER_ID, MODIFY_TIME, 
-    MODIFY_USER_ID, STATUS, INNER_DOCT_ID, DESCRIPTION, GOODAT, is_syn_created, is_syn_updated, 
-    is_syn_deleated
+    MODIFY_USER_ID, STATUS, INNER_DOCT_ID, DESCRIPTION, GOODAT
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -50,8 +46,7 @@
       PHONE, SEX, TECHNICAL, 
       SORT_INDEX, CREATE_TIME, CREATE_USER_ID, 
       MODIFY_TIME, MODIFY_USER_ID, STATUS, 
-      INNER_DOCT_ID, DESCRIPTION, GOODAT, 
-      is_syn_created, is_syn_updated, is_syn_deleated
+      INNER_DOCT_ID, DESCRIPTION, GOODAT
       )
     values (#{doctorId,jdbcType=VARCHAR}, #{accountId,jdbcType=INTEGER}, #{hospitalId,jdbcType=VARCHAR}, 
       #{loginName,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
@@ -59,8 +54,7 @@
       #{phone,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{technical,jdbcType=INTEGER}, 
       #{sortIndex,jdbcType=INTEGER}, #{createTime,jdbcType=VARCHAR}, #{createUserId,jdbcType=VARCHAR}, 
       #{modifyTime,jdbcType=VARCHAR}, #{modifyUserId,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
-      #{innerDoctId,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{goodat,jdbcType=VARCHAR}, 
-      #{isSynCreated,jdbcType=VARCHAR}, #{isSynUpdated,jdbcType=VARCHAR}, #{isSynDeleated,jdbcType=VARCHAR}
+      #{innerDoctId,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{goodat,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.zjrc.sxzz.entity.Doctor" >
@@ -129,15 +123,6 @@
       <if test="goodat != null" >
         GOODAT,
       </if>
-      <if test="isSynCreated != null" >
-        is_syn_created,
-      </if>
-      <if test="isSynUpdated != null" >
-        is_syn_updated,
-      </if>
-      <if test="isSynDeleated != null" >
-        is_syn_deleated,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="doctorId != null" >
@@ -202,15 +187,6 @@
       </if>
       <if test="goodat != null" >
         #{goodat,jdbcType=VARCHAR},
-      </if>
-      <if test="isSynCreated != null" >
-        #{isSynCreated,jdbcType=VARCHAR},
-      </if>
-      <if test="isSynUpdated != null" >
-        #{isSynUpdated,jdbcType=VARCHAR},
-      </if>
-      <if test="isSynDeleated != null" >
-        #{isSynDeleated,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -277,15 +253,6 @@
       <if test="goodat != null" >
         GOODAT = #{goodat,jdbcType=VARCHAR},
       </if>
-      <if test="isSynCreated != null" >
-        is_syn_created = #{isSynCreated,jdbcType=VARCHAR},
-      </if>
-      <if test="isSynUpdated != null" >
-        is_syn_updated = #{isSynUpdated,jdbcType=VARCHAR},
-      </if>
-      <if test="isSynDeleated != null" >
-        is_syn_deleated = #{isSynDeleated,jdbcType=VARCHAR},
-      </if>
     </set>
     where DOCTOR_ID = #{doctorId,jdbcType=VARCHAR}
   </update>
@@ -310,10 +277,7 @@
       STATUS = #{status,jdbcType=VARCHAR},
       INNER_DOCT_ID = #{innerDoctId,jdbcType=VARCHAR},
       DESCRIPTION = #{description,jdbcType=VARCHAR},
-      GOODAT = #{goodat,jdbcType=VARCHAR},
-      is_syn_created = #{isSynCreated,jdbcType=VARCHAR},
-      is_syn_updated = #{isSynUpdated,jdbcType=VARCHAR},
-      is_syn_deleated = #{isSynDeleated,jdbcType=VARCHAR}
+      GOODAT = #{goodat,jdbcType=VARCHAR}
     where DOCTOR_ID = #{doctorId,jdbcType=VARCHAR}
   </update>
 </mapper>
