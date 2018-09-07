@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.zjrc.sxzz.cache.ITokenCache;
-import com.zjrc.sxzz.pattern.factory.ImClientProduct;
+import com.zjrc.sxzz.pattern.imClientFactory.ImClientProduct;
 
 
 

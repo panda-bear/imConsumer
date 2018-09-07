@@ -14,7 +14,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.zjrc.sxzz.dao.SynMapper;
 import com.zjrc.sxzz.entity.Syn;
-import com.zjrc.sxzz.pattern.factory.ImClientProduct;
+import com.zjrc.sxzz.pattern.imClientFactory.ImClientProduct;
 import com.zjrc.sxzz.synTask.enumType.SynResult;
 import com.zjrc.sxzz.synTask.enumType.SynState;
 import com.zjrc.sxzz.synTask.enumType.SynType;

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSONObject;
 import com.zjrc.sxzz.ImClientResponse;
-import com.zjrc.sxzz.pattern.factory.ImClientProduct;
+import com.zjrc.sxzz.pattern.imClientFactory.ImClientProduct;
 import com.zjrc.sxzz.util.JsonUtil;
 
 @RestController

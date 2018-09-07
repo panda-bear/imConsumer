@@ -1,4 +1,4 @@
-package com.zjrc.sxzz.pattern.factory;
+package com.zjrc.sxzz.pattern.imClientFactory;
 
 
 import com.zjrc.sxzz.cache.EhcacheTokenCache;
