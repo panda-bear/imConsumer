@@ -29,24 +29,22 @@ public class SynHospitalTask extends SynTask {
 		switch(transferStr(syn.getSynType())) {
 		case CREATE:
 			log.info("同步线程{}：开始进行同步创建医院{}{}----------" ,Thread.currentThread().getName(), syn.getBusinessId() , syn.getBusinessName());
-			obj.put("name", syn.getBusinessName());
+			obj.put("name", hos.getName());
 			obj.put("parentid", "1");
-			obj.put("createDeptGroup", true);
+			obj.put("createDeptGroup", true);  
 			res = imClient.createDept(obj.toJSONString());
 			obj = JSON.parseObject(res);
 			if ("0".equals(obj.getString("errcode"))) {
 				hos.setHospitalIdDing(obj.getString("id"));
 				hosMapper.updateByPrimaryKeySelective(hos);
 			}
-			obj.clear();
 			break;
 		case UPDATE:
 			log.info("同步线程{}: 开始同步更新医院{}{}------------" ,Thread.currentThread().getName(), syn.getBusinessId() , syn.getBusinessName());
 			obj.put("id", hos.getHospitalIdDing());
-			obj.put("name", syn.getBusinessName());
+			obj.put("name", hos.getName());
 			obj.put("autoAddUser", true);
 			res = imClient.updateDept(obj.toJSONString());
-			obj.clear();
 			break;
 		case DELETE:
 			log.info("同步线程{}： 开始同步删除医院{}{}----------" , Thread.currentThread().getName() , syn.getBusinessId() , syn.getBusinessName());

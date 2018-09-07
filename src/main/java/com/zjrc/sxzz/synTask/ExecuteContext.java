@@ -32,8 +32,8 @@ public class ExecuteContext implements ApplicationContextAware{
 			synTask = (SynDeptTask)context.getBean("synDeptTask");
 			break;
 		case DOCTOR:
-			log.info("同步线程{}:开始同步医生！" , Thread.currentThread().getName());
-			synTask = (SynDoctorTask)context.getBean("synDoctorTask");
+			log.info("同步线程{}:开始同步用户！" , Thread.currentThread().getName());
+			synTask = (SynAccountTask)context.getBean("synAccountTask");
 			break;
 		}
 		synTask.execute(syn);

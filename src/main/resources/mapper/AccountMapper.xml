@@ -1,79 +1,65 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.zjrc.sxzz.dao.DoctorMapper" >
-  <resultMap id="BaseResultMap" type="com.zjrc.sxzz.entity.Doctor" >
-    <id column="DOCTOR_ID" property="doctorId" jdbcType="VARCHAR" />
-    <result column="ACCOUNT_ID" property="accountId" jdbcType="INTEGER" />
-    <result column="HOSPITAL_ID" property="hospitalId" jdbcType="VARCHAR" />
+<mapper namespace="com.zjrc.sxzz.dao.AccountMapper" >
+  <resultMap id="BaseResultMap" type="com.zjrc.sxzz.entity.Account" >
+    <id column="ACCOUNT_ID" property="accountId" jdbcType="INTEGER" />
     <result column="LOGIN_NAME" property="loginName" jdbcType="VARCHAR" />
-    <result column="CODE" property="code" jdbcType="VARCHAR" />
     <result column="NAME" property="name" jdbcType="VARCHAR" />
     <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
-    <result column="ROLE_TYPE" property="roleType" jdbcType="VARCHAR" />
+    <result column="SALT" property="salt" jdbcType="VARCHAR" />
     <result column="MOBILE" property="mobile" jdbcType="VARCHAR" />
     <result column="PHONE" property="phone" jdbcType="VARCHAR" />
     <result column="SEX" property="sex" jdbcType="VARCHAR" />
-    <result column="TECHNICAL" property="technical" jdbcType="INTEGER" />
+    <result column="ROLE_TYPE" property="roleType" jdbcType="VARCHAR" />
+    <result column="HEAD_IMAGE" property="headImage" jdbcType="VARCHAR" />
+    <result column="IS_NEW" property="isNew" jdbcType="INTEGER" />
+    <result column="UPLOAD_TO_IM" property="uploadToIm" jdbcType="TINYINT" />
     <result column="SORT_INDEX" property="sortIndex" jdbcType="INTEGER" />
     <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
     <result column="CREATE_USER_ID" property="createUserId" jdbcType="VARCHAR" />
     <result column="MODIFY_TIME" property="modifyTime" jdbcType="VARCHAR" />
     <result column="MODIFY_USER_ID" property="modifyUserId" jdbcType="VARCHAR" />
     <result column="STATUS" property="status" jdbcType="VARCHAR" />
-    <result column="INNER_DOCT_ID" property="innerDoctId" jdbcType="VARCHAR" />
-    <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
-    <result column="GOODAT" property="goodat" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    DOCTOR_ID, ACCOUNT_ID, HOSPITAL_ID, LOGIN_NAME, CODE, NAME, PASSWORD, ROLE_TYPE, 
-    MOBILE, PHONE, SEX, TECHNICAL, SORT_INDEX, CREATE_TIME, CREATE_USER_ID, MODIFY_TIME, 
-    MODIFY_USER_ID, STATUS, INNER_DOCT_ID, DESCRIPTION, GOODAT
+    ACCOUNT_ID, LOGIN_NAME, NAME, PASSWORD, SALT, MOBILE, PHONE, SEX, ROLE_TYPE, HEAD_IMAGE, 
+    IS_NEW, UPLOAD_TO_IM, SORT_INDEX, CREATE_TIME, CREATE_USER_ID, MODIFY_TIME, MODIFY_USER_ID, 
+    STATUS
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from sxzz_doctor
-    where DOCTOR_ID = #{doctorId,jdbcType=VARCHAR}
+    from sxzz_account
+    where ACCOUNT_ID = #{accountId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from sxzz_doctor
-    where DOCTOR_ID = #{doctorId,jdbcType=VARCHAR}
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sxzz_account
+    where ACCOUNT_ID = #{accountId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.zjrc.sxzz.entity.Doctor" >
-    insert into sxzz_doctor (DOCTOR_ID, ACCOUNT_ID, HOSPITAL_ID, 
-      LOGIN_NAME, CODE, NAME, 
-      PASSWORD, ROLE_TYPE, MOBILE, 
-      PHONE, SEX, TECHNICAL, 
+  <insert id="insert" parameterType="com.zjrc.sxzz.entity.Account" >
+    insert into sxzz_account (ACCOUNT_ID, LOGIN_NAME, NAME, 
+      PASSWORD, SALT, MOBILE, 
+      PHONE, SEX, ROLE_TYPE, 
+      HEAD_IMAGE, IS_NEW, UPLOAD_TO_IM, 
       SORT_INDEX, CREATE_TIME, CREATE_USER_ID, 
-      MODIFY_TIME, MODIFY_USER_ID, STATUS, 
-      INNER_DOCT_ID, DESCRIPTION, GOODAT
+      MODIFY_TIME, MODIFY_USER_ID, STATUS
       )
-    values (#{doctorId,jdbcType=VARCHAR}, #{accountId,jdbcType=INTEGER}, #{hospitalId,jdbcType=VARCHAR}, 
-      #{loginName,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
-      #{password,jdbcType=VARCHAR}, #{roleType,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{technical,jdbcType=INTEGER}, 
+    values (#{accountId,jdbcType=INTEGER}, #{loginName,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{roleType,jdbcType=VARCHAR}, 
+      #{headImage,jdbcType=VARCHAR}, #{isNew,jdbcType=INTEGER}, #{uploadToIm,jdbcType=TINYINT}, 
       #{sortIndex,jdbcType=INTEGER}, #{createTime,jdbcType=VARCHAR}, #{createUserId,jdbcType=VARCHAR}, 
-      #{modifyTime,jdbcType=VARCHAR}, #{modifyUserId,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
-      #{innerDoctId,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{goodat,jdbcType=VARCHAR}
+      #{modifyTime,jdbcType=VARCHAR}, #{modifyUserId,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.zjrc.sxzz.entity.Doctor" >
-    insert into sxzz_doctor
+  <insert id="insertSelective" parameterType="com.zjrc.sxzz.entity.Account" >
+    insert into sxzz_account
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="doctorId != null" >
-        DOCTOR_ID,
-      </if>
       <if test="accountId != null" >
         ACCOUNT_ID,
       </if>
-      <if test="hospitalId != null" >
-        HOSPITAL_ID,
-      </if>
       <if test="loginName != null" >
         LOGIN_NAME,
-      </if>
-      <if test="code != null" >
-        CODE,
       </if>
       <if test="name != null" >
         NAME,
@@ -81,8 +67,8 @@
       <if test="password != null" >
         PASSWORD,
       </if>
-      <if test="roleType != null" >
-        ROLE_TYPE,
+      <if test="salt != null" >
+        SALT,
       </if>
       <if test="mobile != null" >
         MOBILE,
@@ -93,8 +79,17 @@
       <if test="sex != null" >
         SEX,
       </if>
-      <if test="technical != null" >
-        TECHNICAL,
+      <if test="roleType != null" >
+        ROLE_TYPE,
+      </if>
+      <if test="headImage != null" >
+        HEAD_IMAGE,
+      </if>
+      <if test="isNew != null" >
+        IS_NEW,
+      </if>
+      <if test="uploadToIm != null" >
+        UPLOAD_TO_IM,
       </if>
       <if test="sortIndex != null" >
         SORT_INDEX,
@@ -114,31 +109,13 @@
       <if test="status != null" >
         STATUS,
       </if>
-      <if test="innerDoctId != null" >
-        INNER_DOCT_ID,
-      </if>
-      <if test="description != null" >
-        DESCRIPTION,
-      </if>
-      <if test="goodat != null" >
-        GOODAT,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="doctorId != null" >
-        #{doctorId,jdbcType=VARCHAR},
-      </if>
       <if test="accountId != null" >
         #{accountId,jdbcType=INTEGER},
       </if>
-      <if test="hospitalId != null" >
-        #{hospitalId,jdbcType=VARCHAR},
-      </if>
       <if test="loginName != null" >
         #{loginName,jdbcType=VARCHAR},
-      </if>
-      <if test="code != null" >
-        #{code,jdbcType=VARCHAR},
       </if>
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
@@ -146,8 +123,8 @@
       <if test="password != null" >
         #{password,jdbcType=VARCHAR},
       </if>
-      <if test="roleType != null" >
-        #{roleType,jdbcType=VARCHAR},
+      <if test="salt != null" >
+        #{salt,jdbcType=VARCHAR},
       </if>
       <if test="mobile != null" >
         #{mobile,jdbcType=VARCHAR},
@@ -158,8 +135,17 @@
       <if test="sex != null" >
         #{sex,jdbcType=VARCHAR},
       </if>
-      <if test="technical != null" >
-        #{technical,jdbcType=INTEGER},
+      <if test="roleType != null" >
+        #{roleType,jdbcType=VARCHAR},
+      </if>
+      <if test="headImage != null" >
+        #{headImage,jdbcType=VARCHAR},
+      </if>
+      <if test="isNew != null" >
+        #{isNew,jdbcType=INTEGER},
+      </if>
+      <if test="uploadToIm != null" >
+        #{uploadToIm,jdbcType=TINYINT},
       </if>
       <if test="sortIndex != null" >
         #{sortIndex,jdbcType=INTEGER},
@@ -179,31 +165,13 @@
       <if test="status != null" >
         #{status,jdbcType=VARCHAR},
       </if>
-      <if test="innerDoctId != null" >
-        #{innerDoctId,jdbcType=VARCHAR},
-      </if>
-      <if test="description != null" >
-        #{description,jdbcType=VARCHAR},
-      </if>
-      <if test="goodat != null" >
-        #{goodat,jdbcType=VARCHAR},
-      </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.zjrc.sxzz.entity.Doctor" >
-    update sxzz_doctor
+  <update id="updateByPrimaryKeySelective" parameterType="com.zjrc.sxzz.entity.Account" >
+    update sxzz_account
     <set >
-      <if test="accountId != null" >
-        ACCOUNT_ID = #{accountId,jdbcType=INTEGER},
-      </if>
-      <if test="hospitalId != null" >
-        HOSPITAL_ID = #{hospitalId,jdbcType=VARCHAR},
-      </if>
       <if test="loginName != null" >
         LOGIN_NAME = #{loginName,jdbcType=VARCHAR},
-      </if>
-      <if test="code != null" >
-        CODE = #{code,jdbcType=VARCHAR},
       </if>
       <if test="name != null" >
         NAME = #{name,jdbcType=VARCHAR},
@@ -211,8 +179,8 @@
       <if test="password != null" >
         PASSWORD = #{password,jdbcType=VARCHAR},
       </if>
-      <if test="roleType != null" >
-        ROLE_TYPE = #{roleType,jdbcType=VARCHAR},
+      <if test="salt != null" >
+        SALT = #{salt,jdbcType=VARCHAR},
       </if>
       <if test="mobile != null" >
         MOBILE = #{mobile,jdbcType=VARCHAR},
@@ -223,8 +191,17 @@
       <if test="sex != null" >
         SEX = #{sex,jdbcType=VARCHAR},
       </if>
-      <if test="technical != null" >
-        TECHNICAL = #{technical,jdbcType=INTEGER},
+      <if test="roleType != null" >
+        ROLE_TYPE = #{roleType,jdbcType=VARCHAR},
+      </if>
+      <if test="headImage != null" >
+        HEAD_IMAGE = #{headImage,jdbcType=VARCHAR},
+      </if>
+      <if test="isNew != null" >
+        IS_NEW = #{isNew,jdbcType=INTEGER},
+      </if>
+      <if test="uploadToIm != null" >
+        UPLOAD_TO_IM = #{uploadToIm,jdbcType=TINYINT},
       </if>
       <if test="sortIndex != null" >
         SORT_INDEX = #{sortIndex,jdbcType=INTEGER},
@@ -244,43 +221,28 @@
       <if test="status != null" >
         STATUS = #{status,jdbcType=VARCHAR},
       </if>
-      <if test="innerDoctId != null" >
-        INNER_DOCT_ID = #{innerDoctId,jdbcType=VARCHAR},
-      </if>
-      <if test="description != null" >
-        DESCRIPTION = #{description,jdbcType=VARCHAR},
-      </if>
-      <if test="goodat != null" >
-        GOODAT = #{goodat,jdbcType=VARCHAR},
-      </if>
     </set>
-    where DOCTOR_ID = #{doctorId,jdbcType=VARCHAR}
+    where ACCOUNT_ID = #{accountId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.zjrc.sxzz.entity.Doctor" >
-    update sxzz_doctor
-    set ACCOUNT_ID = #{accountId,jdbcType=INTEGER},
-      HOSPITAL_ID = #{hospitalId,jdbcType=VARCHAR},
-      LOGIN_NAME = #{loginName,jdbcType=VARCHAR},
-      CODE = #{code,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="com.zjrc.sxzz.entity.Account" >
+    update sxzz_account
+    set LOGIN_NAME = #{loginName,jdbcType=VARCHAR},
       NAME = #{name,jdbcType=VARCHAR},
       PASSWORD = #{password,jdbcType=VARCHAR},
-      ROLE_TYPE = #{roleType,jdbcType=VARCHAR},
+      SALT = #{salt,jdbcType=VARCHAR},
       MOBILE = #{mobile,jdbcType=VARCHAR},
       PHONE = #{phone,jdbcType=VARCHAR},
       SEX = #{sex,jdbcType=VARCHAR},
-      TECHNICAL = #{technical,jdbcType=INTEGER},
+      ROLE_TYPE = #{roleType,jdbcType=VARCHAR},
+      HEAD_IMAGE = #{headImage,jdbcType=VARCHAR},
+      IS_NEW = #{isNew,jdbcType=INTEGER},
+      UPLOAD_TO_IM = #{uploadToIm,jdbcType=TINYINT},
       SORT_INDEX = #{sortIndex,jdbcType=INTEGER},
       CREATE_TIME = #{createTime,jdbcType=VARCHAR},
       CREATE_USER_ID = #{createUserId,jdbcType=VARCHAR},
       MODIFY_TIME = #{modifyTime,jdbcType=VARCHAR},
       MODIFY_USER_ID = #{modifyUserId,jdbcType=VARCHAR},
-      STATUS = #{status,jdbcType=VARCHAR},
-      INNER_DOCT_ID = #{innerDoctId,jdbcType=VARCHAR},
-      DESCRIPTION = #{description,jdbcType=VARCHAR},
-      GOODAT = #{goodat,jdbcType=VARCHAR}
-    where DOCTOR_ID = #{doctorId,jdbcType=VARCHAR}
+      STATUS = #{status,jdbcType=VARCHAR}
+    where ACCOUNT_ID = #{accountId,jdbcType=INTEGER}
   </update>
-  
-
-  
 </mapper>

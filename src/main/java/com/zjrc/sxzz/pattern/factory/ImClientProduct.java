@@ -50,21 +50,21 @@ public abstract class ImClientProduct {
 	 * @param jsonStr
 	 * @return
 	 */
-	public abstract String createDoctor( String jsonStr);
+	public abstract String createAccount( String jsonStr);
 	
 	
 	/**获取成员详情
-	 * @param doctorIdDing
+	 * @param AccountId
 	 * @return
 	 */
-	public abstract String selectDoctorById(String doctorId);
+	public abstract String selectAccountById(String accountId);
 	
 	/**更新医生信息
 	 * @param token
 	 * @param jsonStr
 	 * @return
 	 */
-	public abstract String updateDoctor(String jsonStr);
+	public abstract String updateAccount(String jsonStr);
 	
 	
 	/**批量删除医生
@@ -72,13 +72,13 @@ public abstract class ImClientProduct {
 	 * @param jsonStr
 	 * @return
 	 */
-	public abstract String deleteDoctors( String jsonStr);
+	public abstract String deleteAccounts( String jsonStr);
 	
 	/**删除医生
 	 * @param token
 	 * @return
 	 */
-	public abstract String deleteDoctor( String id);
+	public abstract String deleteAccount( String id);
 
 	public String getUrlPrefix() {
 		return urlPrefix;

@@ -35,22 +35,22 @@ public class DingImClientProduct extends ImClientProduct{
 	}
 
 	@Override
-	public String createDoctor(String jsonStr) {
+	public String createAccount(String jsonStr) {
 		return HttpClientUtil.doPost(urlPrefix + "/user/create?access_token=" + tokenCache.getToken(), jsonStr);
 	}
 
 	@Override
-	public String updateDoctor(String jsonStr) {
+	public String updateAccount(String jsonStr) {
 		return HttpClientUtil.doPost(urlPrefix + "/user/update?access_token=" + tokenCache.getToken(), jsonStr);
 	}
 
 	@Override
-	public String deleteDoctors(String jsonStr) {
+	public String deleteAccounts(String jsonStr) {
 		return HttpClientUtil.doPost(urlPrefix + "/user/batchdelete?access_token=" + tokenCache.getToken(), jsonStr);
 	}
 
 	@Override
-	public String deleteDoctor(String id) {
+	public String deleteAccount(String id) {
 		return HttpClientUtil.doGet(urlPrefix+"/user/delete?access_token="+tokenCache.getToken()+"&userid="+id);
 	}
 
@@ -60,8 +60,8 @@ public class DingImClientProduct extends ImClientProduct{
 	}
 
 	@Override
-	public String selectDoctorById(String doctorId) {
-		return HttpClientUtil.doGet(urlPrefix+"/user/get?access_token="+tokenCache.getToken()+"&id="+doctorId);
+	public String selectAccountById(String accountId) {
+		return HttpClientUtil.doGet(urlPrefix+"/user/get?access_token="+tokenCache.getToken()+"&userid="+accountId);
 	}
 
 }

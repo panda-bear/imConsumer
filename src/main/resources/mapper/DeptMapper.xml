@@ -368,4 +368,20 @@
 	FROM sxzz_dept d
 	WHERE d.status = '0' AND d.name = #{deptName} AND d.level = 1 AND d.HOSPITAL_ID = #{hospitalId}
   </select>
+  
+  <select id="getDeptIdDingsByAccountId" parameterType="Map" resultType="String">
+	SELECT d.dept_id_ding
+	FROM sxzz_dept d
+	WHERE d.status = '0' AND d.DEPT_ID IN 
+	(
+		SELECT r.dept_id
+		FROM sxzz_rel_dept_doctor r
+		WHERE r.status = '0' AND r.DOCTOR_ID IN 
+		(
+		SELECT d.DOCTOR_ID
+		FROM sxzz_doctor d
+		WHERE d.account_id = #{accountId} AND d.status = '0'
+		)
+	) 
+  </select>  
 </mapper>

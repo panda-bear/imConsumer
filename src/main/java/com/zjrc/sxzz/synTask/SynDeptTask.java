@@ -63,9 +63,8 @@ public class SynDeptTask extends SynTask {
 		case UPDATE:
 			log.info("开始同步更新{}级科室{}{} ,其上级科室id为{}-----------" ,dept.getLevel() , dept.getDeptId() , dept.getName() , dept.getParentDeptId());
 			obj.put("id", dept.getDeptIdDing());
-			obj.put("name", syn.getBusinessName());
+			obj.put("name", dept.getName());
 			res = imClient.updateDept(obj.toJSONString());
-			obj.clear();
 			break;
 		case DELETE:
 			log.info("开始同步删除{}级科室{}{} ,其上级科室id为{}-----------" ,dept.getLevel() , dept.getDeptId() , dept.getName() , dept.getParentDeptId());

@@ -1,5 +1,9 @@
 package com.zjrc.sxzz.dao;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.zjrc.sxzz.entity.Doctor;
 
 public interface DoctorMapper {
@@ -14,4 +18,5 @@ public interface DoctorMapper {
     int updateByPrimaryKeySelective(Doctor record);
 
     int updateByPrimaryKey(Doctor record);
+    
 }

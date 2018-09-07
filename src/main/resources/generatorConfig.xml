@@ -33,7 +33,7 @@
         </javaClientGenerator>
 
        
-        <table tableName="sxzz_syn" domainObjectName="Syn"
+        <table tableName="sxzz_account" domainObjectName="Account"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">

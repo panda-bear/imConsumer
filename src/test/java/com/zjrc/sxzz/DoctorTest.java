@@ -24,13 +24,15 @@ public class DoctorTest extends DingTest {
 		o.put("name", "张迎霞");
 		o.put("department", new String[] {"74846442"});
 		o.put("mobile", "13906811024");
-		String res = imclient.createDoctor(o.toJSONString());
+		String res = imclient.createAccount(o.toJSONString());
 		log.info("创建医生结果------{}", res);
 	}
 	
 	@Test
 	public void selectDoctor() {
-		String res = HttpClientUtil.doGet("https://oapi.dingtalk.com/user/get?userid=123&access_token="+token);
-		log.info(res);
+		String res2 = HttpClientUtil.doGet("https://oapi.dingtalk.com/user/get?userid=1030&access_token="+token);
+		log.info(res2);
+		String res3 = imclient.selectAccountById("1030");
+		log.info(res3);
 	}	
 }
