@@ -1,7 +1,7 @@
 #-------------------公共配置-----------------------
 spring:
   profiles:
-    active: local  #默认使用配置
+    active: test  #默认使用配置
   http:        
     encoding:  #http请求响应字符集配置
       charset: UTF-8  
@@ -23,19 +23,6 @@ logging:
   level:
     com.zjrc.sxzz.dao: DEBUG
 
----
-#---------------开发配置
-spring:
-  profiles: dev
-  datasource: #数据库配置
-    url: jdbc:mysql://20.21.1.92:3306/fjzl_tz?useUnicode=true&characterEncoding=utf-8
-    username: root
-    password: sxzz@rc2015
-    driver-class-name: com.mysql.jdbc.Driver  
-    type: com.alibaba.druid.pool.DruidDataSource #指定数据源
-    
-server:
-  port: 8082 #端口号配置
   
 ---    
 #---------------测试配置
@@ -49,7 +36,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource #指定数据源
   
 server:
-  port: 8083 #端口号配置
+  port: 8082 #端口号配置
   
 ---
 #---------------本地数据库配置
