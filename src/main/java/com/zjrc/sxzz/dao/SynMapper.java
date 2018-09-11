@@ -23,5 +23,5 @@ public interface SynMapper {
      * @param delNums
      * @return
      */
-    List<Syn> getWaitBusinessDatas(@Param("delNums")int delNums);
+    List<Syn> getWaitBusinessDatas(@Param("startIndex")int startIndex , @Param("delNums")int delNums);
 }

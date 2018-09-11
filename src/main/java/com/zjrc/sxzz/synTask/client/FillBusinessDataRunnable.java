@@ -32,16 +32,20 @@ public class FillBusinessDataRunnable implements Runnable {
 	public void run() {
 		int remain = Integer.valueOf(ConfigUtil.getInstance().getString("remain"));
 		int delNums = Integer.valueOf(ConfigUtil.getInstance().getString("delNums"));
+		int startIndex = 0;
 		while(true) {
 			if (queue.size() < remain) {
-				List<Syn> syns = synMapper.getWaitBusinessDatas(delNums);
-				queue.addAll(syns);
+				List<Syn> syns = synMapper.getWaitBusinessDatas(startIndex , delNums);
+				if (syns.size() != 0) {
+					queue.addAll(syns);
+					startIndex = startIndex +  syns.size();
+				}
 				log.info("填充线程{}：队列下限阈值{}---队列实际剩余量{} , 批量获取同步量上限阈值{}-----实际获取同步量{}" ,Thread.currentThread().getName() ,remain , queue.size() , delNums , syns.size() );
 			}
 			try {
 				int waitTime = Integer.valueOf(ConfigUtil.getInstance().getString("waitTime"));
 				log.info("填充线程{}：等待同步线程同步........{}毫秒后开始继续填充" ,Thread.currentThread().getName(), waitTime);
-				Thread.sleep(waitTime);//等待15s
+				Thread.sleep(waitTime);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

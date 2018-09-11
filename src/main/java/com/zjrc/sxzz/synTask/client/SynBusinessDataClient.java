@@ -21,8 +21,8 @@ public class SynBusinessDataClient {
 	@PostConstruct
 	public void runSyn() throws InterruptedException {
 		
-		/*new Thread(fillTask).start();  
-		new Thread(synTask).start();
+		new Thread(fillTask).start();  
+		/*new Thread(synTask).start();
 		new Thread(synTask).start();
 		new Thread(synTask).start();*/
 		//new Thread(synTask).start();

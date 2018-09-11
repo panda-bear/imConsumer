@@ -1,7 +1,7 @@
 #-------------------公共配置-----------------------
 spring:
   profiles:
-    active: test  #默认使用配置
+    active: local  #默认使用配置
   http:        
     encoding:  #http请求响应字符集配置
       charset: UTF-8  

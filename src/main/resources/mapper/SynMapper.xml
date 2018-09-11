@@ -192,6 +192,6 @@
 	FROM sxzz_syn s
 	WHERE s.syn_state = '0' OR (s.syn_state = '1' AND s.syn_result = '1' AND s.syn_nums &lt; 3)
 	ORDER BY s.create_date ASC
-	LIMIT #{delNums}
+	LIMIT #{startIndex},#{delNums}
   </select>   
 </mapper>
